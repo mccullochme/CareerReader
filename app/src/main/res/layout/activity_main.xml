@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/FindCollegeButton"
         android:layout_width="267dp"
         android:layout_height="65dp"
         android:text="Find a College"
