@@ -24,32 +24,32 @@
             android:layout_height="wrap_content"
             android:text="Main Field of Study" />
 
-        <RadioButton
-            android:id="@+id/radioButton2"
+        <CheckBox
+            android:id="@+id/mathBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Math" />
 
-        <RadioButton
-            android:id="@+id/radioButton11"
+        <CheckBox
+            android:id="@+id/scienceBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Science" />
 
-        <RadioButton
-            android:id="@+id/radioButton12"
+        <CheckBox
+            android:id="@+id/historyBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="History" />
 
-        <RadioButton
-            android:id="@+id/radioButton13"
+        <CheckBox
+            android:id="@+id/englishBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="English" />
 
-        <RadioButton
-            android:id="@+id/radioButton14"
+        <CheckBox
+            android:id="@+id/artBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Art" />
@@ -60,26 +60,26 @@
             android:layout_height="wrap_content"
             android:text="Tuition(Per Semester)" />
 
-        <RadioButton
-            android:id="@+id/radioButton15"
+        <CheckBox
+            android:id="@+id/zeroToFive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="$0 - $5,000" />
 
-        <RadioButton
-            android:id="@+id/radioButton16"
+        <CheckBox
+            android:id="@+id/fiveToTen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="$5000 - $10,000" />
 
-        <RadioButton
-            android:id="@+id/radioButton17"
+        <CheckBox
+            android:id="@+id/tenToTwenty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="$10000 - $20,000" />
 
-        <RadioButton
-            android:id="@+id/radioButton18"
+        <CheckBox
+            android:id="@+id/twentyPlus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="$20,000+" />
@@ -90,20 +90,20 @@
             android:layout_height="wrap_content"
             android:text="Enviornment" />
 
-        <RadioButton
-            android:id="@+id/radioButton19"
+        <CheckBox
+            android:id="@+id/ruralBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Rural" />
 
-        <RadioButton
-            android:id="@+id/radioButton20"
+        <CheckBox
+            android:id="@+id/suburbanBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Suburban" />
 
-        <RadioButton
-            android:id="@+id/radioButton21"
+        <CheckBox
+            android:id="@+id/urbanBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Urban" />
@@ -114,23 +114,23 @@
             android:layout_height="wrap_content"
             android:text="Size" />
 
-        <RadioButton
-            android:id="@+id/radioButton22"
+        <CheckBox
+            android:id="@+id/smallBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Small(5,000 students and below)." />
+            android:text="Small (5,000 students and below)." />
 
-        <RadioButton
-            android:id="@+id/radioButton23"
+        <CheckBox
+            android:id="@+id/mediumBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medium(5,001 - 15,000 Students)" />
+            android:text="Medium (5,001 - 15,000 Students)" />
 
-        <RadioButton
-            android:id="@+id/radioButton24"
+        <CheckBox
+            android:id="@+id/largeBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Large(15,001+ Students)" />
+            android:text="Large (15,001+ Students)" />
 
         <TextView
             android:id="@+id/textView16"
@@ -138,14 +138,14 @@
             android:layout_height="wrap_content"
             android:text="Type" />
 
-        <RadioButton
-            android:id="@+id/radioButton25"
+        <CheckBox
+            android:id="@+id/publicBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Public" />
 
-        <RadioButton
-            android:id="@+id/radioButton26"
+        <CheckBox
+            android:id="@+id/privateBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Private" />
