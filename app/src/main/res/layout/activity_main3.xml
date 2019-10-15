@@ -46,6 +46,7 @@
             android:id="@+id/englishBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:text="English" />
 
         <CheckBox
@@ -58,31 +59,31 @@
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tuition(Per Semester)" />
+            android:text="Tuition and Fees *per year*" />
 
         <CheckBox
             android:id="@+id/zeroToFive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$0 - $5,000" />
+            android:text="$0 - $20,000" />
 
         <CheckBox
             android:id="@+id/fiveToTen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$5000 - $10,000" />
+            android:text="$20,001 - $30,000" />
 
         <CheckBox
             android:id="@+id/tenToTwenty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$10000 - $20,000" />
+            android:text="$30,001 - $40,000" />
 
         <CheckBox
             android:id="@+id/twentyPlus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$20,000+" />
+            android:text="$40,001+" />
 
         <TextView
             android:id="@+id/textView14"
