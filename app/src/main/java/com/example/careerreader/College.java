@@ -6,6 +6,7 @@ public class College {
     private String type = "";
     private int size = 0;
     private int tuition = 0;
+    private String name = "";
 
 
     public College (String fieldOfStudy, String environment, String type, int size, int tuition){
@@ -56,4 +57,11 @@ public class College {
         this.tuition = tuition;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
