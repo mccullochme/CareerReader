@@ -11,32 +11,67 @@ import android.widget.CheckBox;
 public class Main3Activity extends AppCompatActivity {
 
 
-    private String userCode = "";
-    final private CheckBox math = findViewById(R.id.mathBox);
-    final private CheckBox science = findViewById(R.id.scienceBox);
-    final private CheckBox history = findViewById(R.id.historyBox);
-    final private CheckBox englsih = findViewById(R.id.englishBox);
-    final private CheckBox art = findViewById(R.id.artBox);
-    final private CheckBox zeroToFive = findViewById(R.id.zeroToFive);
-    final private CheckBox fiveToTen = findViewById(R.id.fiveToTen);
-    final private CheckBox tenToTwenty = findViewById(R.id.tenToTwenty);
-    final private CheckBox twentyPlus = findViewById(R.id.twentyPlus);
-    final private CheckBox rural = findViewById(R.id.ruralBox);
-    final private CheckBox subUrban = findViewById(R.id.suburbanBox);
-    final private CheckBox urban = findViewById(R.id.urbanBox);
-    final private CheckBox small = findViewById(R.id.smallBox);
-    final private CheckBox medium = findViewById(R.id.mediumBox);
-    final private CheckBox large = findViewById(R.id.largeBox);
-    final private CheckBox publicC = findViewById(R.id.publicBox);
-    final private CheckBox privateC = findViewById(R.id.privateBox);
+    String userCode = "";
 
+    CheckBox math ;
+    CheckBox science ;
+    CheckBox history ;
+    CheckBox englsih ;
+    CheckBox art ;
+    CheckBox zeroToFive ;
+    CheckBox fiveToTen ;
+    CheckBox tenToTwenty ;
+    CheckBox twentyPlus ;
+    CheckBox rural ;
+    CheckBox subUrban ;
+    CheckBox urban ;
+    CheckBox small ;
+    CheckBox medium ;
+    CheckBox large ;
+    CheckBox publicC ;
+    CheckBox privateC ;
+    Button backButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        Button backButton = findViewById(R.id.backButton);
+        backButton = findViewById(R.id.backButton);
+
+
+       math = findViewById(R.id.mathBox);
+        science = findViewById(R.id.scienceBox);
+         history = findViewById(R.id.historyBox);
+         englsih = findViewById(R.id.englishBox);
+         art = findViewById(R.id.artBox);
+         zeroToFive = findViewById(R.id.zeroToFive);
+         fiveToTen = findViewById(R.id.fiveToTen);
+         tenToTwenty = findViewById(R.id.tenToTwenty);
+         twentyPlus = findViewById(R.id.twentyPlus);
+         rural = findViewById(R.id.ruralBox);
+        subUrban = findViewById(R.id.suburbanBox);
+         urban = findViewById(R.id.urbanBox);
+         small = findViewById(R.id.smallBox);
+         medium = findViewById(R.id.mediumBox);
+         large = findViewById(R.id.largeBox);
+         publicC = findViewById(R.id.publicBox);
+         privateC = findViewById(R.id.privateBox);
+
+
+
+
+    }
+
+    public void goBack(View view)
+    {
+        Intent intent = new Intent(Main3Activity.this , MainActivity.class);
+        startActivity(intent);
+    }
+    public void Next(View view){
+        Intent intent = new Intent(Main3Activity.this , resultsscreenActivity.class);
+        startActivity(intent);
+
         if(math.isChecked())
         {
             userCode = userCode + "a";
@@ -107,14 +142,9 @@ public class Main3Activity extends AppCompatActivity {
 
     }
 
-    public void goBack(View view)
-    {
-        Intent intent = new Intent(Main3Activity.this , MainActivity.class);
-        startActivity(intent);
+
+    if(userCode.){
+
     }
-
-
-
-
 
 }
