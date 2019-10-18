@@ -1,20 +1,23 @@
 package com.example.careerreader;
 
+import java.util.ArrayList;
 public class College {
     private String fieldOfStudy = "";
+    private int tuition = 0;
     private String environment = "";
     private String type = "";
     private int size = 0;
-    private int tuition = 0;
     private String name = "";
+    private String code = "";
 
-
-    public College (String fieldOfStudy, String environment, String type, int size, int tuition){
+    public College (String fieldOfStudy, int tuition, String environment, int size, String type, String name, String code){
         this.fieldOfStudy = fieldOfStudy;
         this.environment = environment;
         this.type = type;
         this.size = size;
         this.tuition = tuition;
+        this.name = name;
+        this.code = code;
     }
 
     public String getFieldOfStudy() {
@@ -61,7 +64,8 @@ public class College {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getCode(){
+        return this.code;
     }
+
 }

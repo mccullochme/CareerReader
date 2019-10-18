@@ -27,19 +27,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
-
-
-//    public void goBack(View view)
-//    {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        intent.putExtra("message", password);
-//        setResult(RESULT_OK,intent);
-//        finish();
-//        // startActivity(intent);
-//
-//    }
-
 
 }
