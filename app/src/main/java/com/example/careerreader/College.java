@@ -1,6 +1,5 @@
 package com.example.careerreader;
 
-import java.util.ArrayList;
 public class College {
     private String fieldOfStudy = "";
     private int tuition = 0;
