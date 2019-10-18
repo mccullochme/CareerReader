@@ -15,7 +15,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:text="Your Most Compatable college is:"
+            android:text="Your Most Compatable(s) college is:"
             android:textSize="24sp" />
 
         <TextView

@@ -142,7 +142,6 @@ public class Main3Activity extends AppCompatActivity {
 
     }
 
-
     if(userCode.){
 
     }
