@@ -7,11 +7,11 @@
     tools:context=".MainActivity">
 
 
-
     <Button
         android:id="@+id/FindCollegeButton"
         android:layout_width="267dp"
         android:layout_height="65dp"
+        android:onClick="findACollege"
         android:text="Find a College that best suits you"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

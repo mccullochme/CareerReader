@@ -141,10 +141,10 @@ public class SelectionScreen extends AppCompatActivity {
         //array list of all colleges
         listOfC.add(VCU);
 
-        Intent intentNext = new Intent(SelectionScreen.this , resultScreenActivity.class);
+        Intent intentNext = new Intent(SelectionScreen.this , ResultScreen.class);
         intentNext.putExtra("userCode", userCode);
+        //setResult(RESULT_OK, intentNext);
         startActivity(intentNext);
-
 
     }
 
