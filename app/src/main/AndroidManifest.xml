@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".resultsscreenActivity"
+            android:name=".resultScreenActivity"
             android:label="@string/title_activity_resultsscreen"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Main3Activity" />
+        <activity android:name=".SelectionScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

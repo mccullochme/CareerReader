@@ -142,8 +142,8 @@ public class SelectionScreen extends AppCompatActivity {
         listOfC.add(VCU);
 
         Intent intentNext = new Intent(SelectionScreen.this , resultScreenActivity.class);
-        intentNext.putExtra("userCode", userCode);
-        startActivity(intentNext);
+       intentNext.putExtra("userCode", userCode);
+       startActivity(intentNext);
 
 
     }

@@ -1,4 +1,6 @@
 package com.example.careerreader;
+import android.content.Intent;
+import android.provider.ContactsContract;
 import android.widget.TextView;
 import android.os.Bundle;
 
@@ -14,7 +16,7 @@ public class resultScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sample = findViewById(R.id.textView4);
     }
-    protected void onActivityResult(){
+    protected void onActivityResult(Intent data){
         sample2 = data.getExtras().getString("userCode");
     }
 
