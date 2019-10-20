@@ -17,8 +17,10 @@ public class SelectionScreen extends AppCompatActivity {
      * This is where all colleges will be stored
      */
     College VCU = new College("Art", 31360, "Urban", 24058, "Public", "Virginia Commonwealth University", "ehlop");
+    //College JMU = new College( ""
 
     String userCode = "";
+
 
     CheckBox math ;
     CheckBox science ;
