@@ -27,7 +27,7 @@ public class MainActivityTest {
 
     // User Story 1 Select College
     @Test
-    public void testButtontToEnterSelection(){
+    public void testButtonToEnterSelection(){
         /*
         Select College
         Scenario 1
