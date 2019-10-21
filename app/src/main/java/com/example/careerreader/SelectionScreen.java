@@ -22,8 +22,8 @@ public class SelectionScreen extends AppCompatActivity {
     College VTECH = new College("STEM", 19000, "Rural", 25175, "Public", "Virginia Polytechnic University", "afjop");
     College JMU = new College("Health", 20000, "Rural", 19262, "Public", "James Madison University", "bfjop");
     College HAMPTON = new College("STEM", 34000, "Urban", 3793, "Private", "Hampton University", "ahlmq");
-    College LU = new College("STEM", 25000, "Suburban", 46680, "Private", "Liberty University", "agkoq");
-    College URVA = new College("Art", 25000, "Suburban", 3229, "Private", "University of Richmond", "egkmq");
+    College LU = new College("Business", 25000, "Suburban", 46680, "Private", "Liberty University", "cgkoq");
+    College URVA = new College("Business", 25000, "Suburban", 3229, "Private", "University of Richmond", "cgkmq");
     College RADFORD = new College("Social Science", 17000, "Rural", 8426, "Public", "Radford University", "bfjnp");
     College UVA = new College("STEM", 19000, "Urban", 15963, "Public", "University of Virginia", "aflop");
     //College JMU = new College( "")
