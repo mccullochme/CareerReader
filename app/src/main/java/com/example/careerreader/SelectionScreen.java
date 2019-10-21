@@ -61,10 +61,10 @@ public class SelectionScreen extends AppCompatActivity {
          history = findViewById(R.id.businessBox);
          english = findViewById(R.id.healthBox);
          art = findViewById(R.id.artBox);
-         zeroToFive = findViewById(R.id.zeroToFive);
-         fiveToTen = findViewById(R.id.fiveToTen);
-         tenToTwenty = findViewById(R.id.tenToTwenty);
-         twentyPlus = findViewById(R.id.twentyPlus);
+         zeroToFive = findViewById(R.id.zeroToTwenty);
+         fiveToTen = findViewById(R.id.twentyToThirty);
+         tenToTwenty = findViewById(R.id.thirtyToForty);
+         twentyPlus = findViewById(R.id.fortyPlus);
          rural = findViewById(R.id.ruralBox);
          subUrban = findViewById(R.id.suburbanBox);
          urban = findViewById(R.id.urbanBox);
