@@ -25,29 +25,29 @@
             android:text="Main Field of Study" />
 
         <CheckBox
-            android:id="@+id/mathBox"
+            android:id="@+id/stemBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Math" />
+            android:text="STEM" />
 
         <CheckBox
-            android:id="@+id/scienceBox"
+            android:id="@+id/socialScienceBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Science" />
+            android:text="Social Science" />
 
         <CheckBox
-            android:id="@+id/historyBox"
+            android:id="@+id/businessBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="History" />
+            android:text="Business" />
 
         <CheckBox
-            android:id="@+id/englishBox"
+            android:id="@+id/healthBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="English" />
+            android:text="Health" />
 
         <CheckBox
             android:id="@+id/artBox"

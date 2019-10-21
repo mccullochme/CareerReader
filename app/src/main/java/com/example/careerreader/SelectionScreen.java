@@ -56,10 +56,10 @@ public class SelectionScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_selection);
         backButton = findViewById(R.id.backButton);
-         math = findViewById(R.id.mathBox);
-         science = findViewById(R.id.scienceBox);
-         history = findViewById(R.id.historyBox);
-         english = findViewById(R.id.englishBox);
+         math = findViewById(R.id.stemBox);
+         science = findViewById(R.id.socialScienceBox);
+         history = findViewById(R.id.businessBox);
+         english = findViewById(R.id.healthBox);
          art = findViewById(R.id.artBox);
          zeroToFive = findViewById(R.id.zeroToFive);
          fiveToTen = findViewById(R.id.fiveToTen);
@@ -82,6 +82,9 @@ public class SelectionScreen extends AppCompatActivity {
     }
 
     public void Next(View view){
+
+        userCode="";
+
         if(math.isChecked())
         {
             userCode = userCode + "a";
@@ -162,9 +165,16 @@ public class SelectionScreen extends AppCompatActivity {
         listOfC.add(UVA);
 
 
+
+
+        //finish adding all colleges to array list
+
+        //compare userCode to the code of each college in the array list, to see if they match
+
+        //then if the codes match .add it to a new array list that we will use to print out into the result screen
+
         Intent intentNext = new Intent(SelectionScreen.this , ResultScreen.class);
         intentNext.putExtra("userCode", userCode);
-        //setResult(RESULT_OK, intentNext);
         startActivity(intentNext);
 
     }
