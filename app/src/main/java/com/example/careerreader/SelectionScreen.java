@@ -16,25 +16,23 @@ public class SelectionScreen extends AppCompatActivity {
     /**
      * This is where all colleges will be stored
      */
-    College VCU = new College("Art", 21000, "Urban", 24058, "Public", "Virginia Commonwealth University", "eglop");
-    College ODU = new College("Health", 16000, "Rural", 19606, "Public", "Old Dominion University", "dfjop");
-    College GMU = new College("Business", 19000, "Suburban", 23179, "Public", "George Mason University", "cfkop");
-    College VTECH = new College("STEM", 19000, "Rural", 25175, "Public", "Virginia Polytechnic University", "afjop");
-    College JMU = new College("Health", 20000, "Rural", 19262, "Public", "James Madison University", "bfjop");
-    College HAMPTON = new College("STEM", 34000, "Urban", 3793, "Private", "Hampton University", "ahlmq");
-    College LU = new College("STEM", 25000, "Suburban", 46680, "Private", "Liberty University", "agkoq");
-    College URVA = new College("Art", 25000, "Suburban", 3229, "Private", "University of Richmond", "egkmq");
-    College RADFORD = new College("Social Science", 17000, "Rural", 8426, "Public", "Radford University", "bfjnp");
-    College UVA = new College("STEM", 19000, "Urban", 15963, "Public", "University of Virginia", "aflop");
-    //College JMU = new College( "")
+    College VCU = new College("Art", 21000, "Urban", 24058, "Public", "Virginia Commonwealth University", "ehlop");
+    College ODU = new College("Health", 16000, "Rural", 19606, "Public", "Old Dominion University", "aflop");
+    College GMU = new College("Business", 19000, "Suburban", 23179, "Public", "George Mason University", "ehlop");
+    College VTECH = new College("STEM", 19000, "Rural", 25175, "Public", "Virginia Polytechnic University", "ehlop");
+    College JMU = new College("Health", 20000, "Rural", 19262, "Public", "James Madison University", "ehlop");
+    College HAMPTON = new College("Health", 34000, "Urban", 3793, "Private", "Hampton University", "ehlop");
+    College LU = new College("Business", 25000, "Suburban", 46680, "Private", "Liberty University", "ehlop");
+    College URVA = new College("", 25000, "Suburban", 3229, "Private", "University of Richmond", "ehlop");
+    College RADFORD = new College("History", 17000, "Rural", 8426, "Public", "Radford University", "ehlop");
+    College UVA = new College("Math", 19000, "Urban", 15963, "Public", "University of Virginia", "ehlop");
 
     String userCode = "";
 
-
-    CheckBox math ;
-    CheckBox science ;
-    CheckBox history ;
-    CheckBox english ;
+    CheckBox stem ;
+    CheckBox socialScience ;
+    CheckBox business ;
+    CheckBox health ;
     CheckBox art ;
     CheckBox zeroToFive ;
     CheckBox fiveToTen ;
@@ -56,10 +54,10 @@ public class SelectionScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_selection);
         backButton = findViewById(R.id.backButton);
-         math = findViewById(R.id.stemBox);
-         science = findViewById(R.id.socialScienceBox);
-         history = findViewById(R.id.businessBox);
-         english = findViewById(R.id.healthBox);
+         stem = findViewById(R.id.stemBox);
+         socialScience = findViewById(R.id.socialScienceBox);
+         business = findViewById(R.id.businessBox);
+         health = findViewById(R.id.healthBox);
          art = findViewById(R.id.artBox);
          zeroToFive = findViewById(R.id.zeroToFive);
          fiveToTen = findViewById(R.id.fiveToTen);
@@ -85,18 +83,18 @@ public class SelectionScreen extends AppCompatActivity {
 
         userCode="";
 
-        if(math.isChecked())
+        if(stem.isChecked())
         {
             userCode = userCode + "a";
         }
-        if(science.isChecked())
+        if(socialScience.isChecked())
         {
             userCode = userCode + "b";
         }
-        if(history.isChecked())
+        if(business.isChecked())
         {
             userCode = userCode + "c";
-        }if(english.isChecked())
+        }if(health.isChecked())
         {
             userCode = userCode + "d";
         }
