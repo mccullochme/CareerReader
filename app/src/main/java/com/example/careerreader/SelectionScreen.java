@@ -11,22 +11,6 @@ import android.widget.CheckBox;
 
 public class SelectionScreen extends AppCompatActivity {
 
-    ArrayList<College> listOfC = new ArrayList<College>();
-
-    /**
-     * This is where all colleges will be stored
-     */
-    College VCU = new College("Art", 21000, "Urban", 24058, "Public", "Virginia Commonwealth University", "eglop");
-    College ODU = new College("Health", 16000, "Rural", 19606, "Public", "Old Dominion University", "dfjop");
-    College GMU = new College("Business", 19000, "Suburban", 23179, "Public", "George Mason University", "cfkop");
-    College VTECH = new College("STEM", 19000, "Rural", 25175, "Public", "Virginia Polytechnic University", "afjop");
-    College JMU = new College("Health", 20000, "Rural", 19262, "Public", "James Madison University", "bfjop");
-    College HAMPTON = new College("STEM", 34000, "Urban", 3793, "Private", "Hampton University", "ahlmq");
-    College LU = new College("Business", 25000, "Suburban", 46680, "Private", "Liberty University", "cgkoq");
-    College URVA = new College("Business", 25000, "Suburban", 3229, "Private", "University of Richmond", "cgkmq");
-    College RADFORD = new College("Social Science", 17000, "Rural", 8426, "Public", "Radford University", "bfjnp");
-    College UVA = new College("STEM", 19000, "Urban", 15963, "Public", "University of Virginia", "aflop");
-    //College JMU = new College( "")
 
     String userCode = "";
 
@@ -56,7 +40,7 @@ public class SelectionScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_selection);
         backButton = findViewById(R.id.backButton);
-         math = findViewById(R.id.stemBox);
+         math = findViewById(R.id.);
          science = findViewById(R.id.socialScienceBox);
          history = findViewById(R.id.businessBox);
          english = findViewById(R.id.healthBox);
@@ -152,26 +136,6 @@ public class SelectionScreen extends AppCompatActivity {
         {
             userCode = userCode + "q";
         }
-        //array list of all colleges
-        listOfC.add(VCU);
-        listOfC.add(ODU);
-        listOfC.add(VTECH);
-        listOfC.add(GMU);
-        listOfC.add(JMU);
-        listOfC.add(RADFORD);
-        listOfC.add(URVA);
-        listOfC.add(LU);
-        listOfC.add(HAMPTON);
-        listOfC.add(UVA);
-
-
-
-
-        //finish adding all colleges to array list
-
-        //compare userCode to the code of each college in the array list, to see if they match
-
-        //then if the codes match .add it to a new array list that we will use to print out into the result screen
 
         Intent intentNext = new Intent(SelectionScreen.this , ResultScreen.class);
         intentNext.putExtra("userCode", userCode);
