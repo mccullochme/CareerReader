@@ -36,7 +36,7 @@ public class MainActivityTest {
         /*
         Select College
         Scenario 2
-        * This test, tests the ability to select a major by clicking on a checkbox
+        * This test, tests the ability to select STEM as a major by clicking on the STEM checkbox
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.stemBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
@@ -47,7 +47,7 @@ public class MainActivityTest {
         /*
         Select College
         Scenario 3
-        * This test, tests the ability to select a major by clicking on a checkbox
+        * This test, tests the ability to select all majors by clicking on all checkboxes
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.stemBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
