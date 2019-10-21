@@ -62,25 +62,25 @@
             android:text="Tuition and Fees *per year*" />
 
         <CheckBox
-            android:id="@+id/zeroToFive"
+            android:id="@+id/zeroToTwenty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="$0 - $20,000" />
 
         <CheckBox
-            android:id="@+id/fiveToTen"
+            android:id="@+id/twentyToThirty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="$20,001 - $30,000" />
 
         <CheckBox
-            android:id="@+id/tenToTwenty"
+            android:id="@+id/thirtyToForty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="$30,001 - $40,000" />
 
         <CheckBox
-            android:id="@+id/twentyPlus"
+            android:id="@+id/fortyPlus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="$40,001+" />

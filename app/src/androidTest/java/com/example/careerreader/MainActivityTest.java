@@ -82,7 +82,7 @@ public class MainActivityTest {
         This tests the ability to select a college in the price range between $20,00-30,00
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
-        onView(withId(R.id.fiveToTen)).perform(click());
+        onView(withId(R.id.twentyToThirty)).perform(click());
         onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
@@ -93,8 +93,8 @@ public class MainActivityTest {
         This tests the ability to select a college in the price range between $0-$20,00 and $40,00
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
-        onView(withId(R.id.zeroToFive)).perform(click());
-        onView(withId(R.id.twentyPlus)).perform(click());
+        onView(withId(R.id.zeroToTwenty)).perform(click());
+        onView(withId(R.id.fortyPlus)).perform(click());
         onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
     }
     // User story 3 Find private or public colleges
