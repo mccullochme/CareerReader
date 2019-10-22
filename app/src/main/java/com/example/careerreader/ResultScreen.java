@@ -1,6 +1,9 @@
 package com.example.careerreader;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
 
@@ -69,5 +72,10 @@ public class ResultScreen extends AppCompatActivity {
         }
 
           resultView.setText(resultText);
+
+    }
+    public void goBack(View view) {
+        Intent intent = new Intent(ResultScreen.this, SelectionScreen.class);
+        startActivity(intent);
     }
 }
