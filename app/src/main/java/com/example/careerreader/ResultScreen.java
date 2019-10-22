@@ -12,7 +12,7 @@ public class ResultScreen extends AppCompatActivity {
     String userCode = "";
     ArrayList<College> listOfC = new ArrayList<College>();
     ArrayList<College> finalArray = new ArrayList<College>();
-    String[] userList;
+    String[] userArry;
     ArrayList<Boolean> boolList = new ArrayList<Boolean>();
 
     /**
@@ -35,8 +35,8 @@ public class ResultScreen extends AppCompatActivity {
         setContentView(R.layout.screen_result);
         resultView = findViewById(R.id.resultView);
         userCode = getIntent().getExtras() .getString("userCode");
-        userList  = userCode.split(",");
-
+        userArry  = userCode.split(",");
+        System.out.println("--------------"+ userCode);
 
         //array list of all colleges
         listOfC.add(VCU);
@@ -51,15 +51,15 @@ public class ResultScreen extends AppCompatActivity {
         listOfC.add(UVA);
 
         for(College x: listOfC){
-            for(int i=0; i<userList.length; i++){
-                if (userList[i].contains(Character.toString(x.getCode().charAt(i)))){
+            for(int i=0; i<userArry.length; i++){
+                if ((!userArry[i].equals("")) && userArry[i].contains(Character.toString(x.getCode().charAt(i)))){
                     boolList.add(true);
                 }
-                else{
+                else if(!userArry[i].equals("")){
                     boolList.add(false);
                 }
             }
-            if(boolList.contains(false)){
+            if(!boolList.contains(false)){
                 finalArray.add(x);
             }
         }
