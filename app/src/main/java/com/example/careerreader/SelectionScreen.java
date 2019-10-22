@@ -4,21 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
-import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.widget.CheckBox;
 
 public class SelectionScreen extends AppCompatActivity {
 
-
     String userCode = "";
 
-
-    CheckBox math ;
-    CheckBox science ;
-    CheckBox history ;
-    CheckBox english ;
+    CheckBox stem ;
+    CheckBox socialScience;
+    CheckBox business ;
+    CheckBox health ;
     CheckBox art ;
     CheckBox zeroToFive ;
     CheckBox fiveToTen ;
@@ -40,10 +37,10 @@ public class SelectionScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_selection);
         backButton = findViewById(R.id.backButton);
-         math = findViewById(R.id.);
-         science = findViewById(R.id.socialScienceBox);
-         history = findViewById(R.id.businessBox);
-         english = findViewById(R.id.healthBox);
+         stem = findViewById(R.id.stemBox);
+         socialScience = findViewById(R.id.socialScienceBox);
+         business = findViewById(R.id.businessBox);
+         health = findViewById(R.id.healthBox);
          art = findViewById(R.id.artBox);
          zeroToFive = findViewById(R.id.zeroToTwenty);
          fiveToTen = findViewById(R.id.twentyToThirty);
@@ -69,18 +66,18 @@ public class SelectionScreen extends AppCompatActivity {
 
         userCode="";
 
-        if(math.isChecked())
+        if(stem.isChecked())
         {
             userCode = userCode + "a";
         }
-        if(science.isChecked())
+        if(socialScience.isChecked())
         {
             userCode = userCode + "b";
         }
-        if(history.isChecked())
+        if(business.isChecked())
         {
             userCode = userCode + "c";
-        }if(english.isChecked())
+        }if(health.isChecked())
         {
             userCode = userCode + "d";
         }

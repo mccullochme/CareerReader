@@ -3,10 +3,14 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.rule.ActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
@@ -32,18 +36,18 @@ public class MainActivityTest {
         /*
         Select College
         Scenario 2
-        * This test, tests the ability to select STEM as a major by clicking on the STEM checkbox
+        * This test, tests the ability to select a major by clicking on a checkbox
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.stemBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
-        onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
     public void testSelectAllMajors(){
         /*
         Select College
         Scenario 3
-        * This test, tests the ability to select all majors by clicking on all checkboxes
+        * This test, tests the ability to select a major by clicking on a checkbox
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.stemBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
@@ -51,7 +55,7 @@ public class MainActivityTest {
         onView(withId(R.id.businessBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
         onView(withId(R.id.healthBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
         onView(withId(R.id.artBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
-        onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
     // User Story 2 Select College
     @Test
@@ -74,7 +78,7 @@ public class MainActivityTest {
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.twentyToThirty)).perform(click());
-        onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
     public void testPriceRange2(){
@@ -86,7 +90,7 @@ public class MainActivityTest {
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.zeroToTwenty)).perform(click());
         onView(withId(R.id.fortyPlus)).perform(click());
-        onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
     // User story 3 Find private or public colleges
     @Test
@@ -98,7 +102,7 @@ public class MainActivityTest {
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.privateBox)).perform(ViewActions.scrollTo()).perform(click());
-        onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
     public void testSelectingPublicSchoolBox(){
@@ -109,7 +113,7 @@ public class MainActivityTest {
         */
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.publicBox)).perform(ViewActions.scrollTo()).perform(click());
-        onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
     public void testSelectingPublicAndPrivate(){
@@ -121,7 +125,15 @@ public class MainActivityTest {
         onView(withId(R.id.FindCollegeButton)).perform(click());
         onView(withId(R.id.publicBox)).perform(ViewActions.scrollTo()).perform(click());
         onView(withId(R.id.privateBox)).perform(ViewActions.scrollTo()).perform(click());
-        onView(withId(R.id.button8)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
 
+    @Before
+    public void setUp() throws Exception {
+
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
 }

@@ -3,14 +3,13 @@ package com.example.careerreader;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 import android.os.Bundle;
-import android.content.Intent;
 
 import java.util.ArrayList;
 
 public class ResultScreen extends AppCompatActivity {
-    TextView sampleView;
-    String sample2 = "";
-    String sample3 = "";
+    TextView resultView;
+    String resultText= "";
+    String userCode = "";
     ArrayList<College> listOfC = new ArrayList<College>();
     ArrayList<College> finalArray = new ArrayList<College>();
 
@@ -27,30 +26,34 @@ public class ResultScreen extends AppCompatActivity {
     College URVA = new College("Business", 25000, "Suburban", 3229, "Private", "University of Richmond", "cgkmq");
     College RADFORD = new College("Social Science", 17000, "Rural", 8426, "Public", "Radford University", "bfjnp");
     College UVA = new College("STEM", 19000, "Urban", 15963, "Public", "University of Virginia", "aflop");
-    //College JMU = new College( "")
-    //College JMU = new College( ""
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result_screen2);
-        sampleView = findViewById(R.id.sampleText);
-        sample2 = getIntent().getExtras() .getString("userCode");
-        sampleView.setText(sample2);
-
+        setContentView(R.layout.screen_result);
+        resultView = findViewById(R.id.resultView);
+        userCode = getIntent().getExtras() .getString("userCode");
 
         //array list of all colleges
         listOfC.add(VCU);
+        listOfC.add(ODU);
+        listOfC.add(GMU);
+        listOfC.add(VTECH);
+        listOfC.add(JMU);
+        listOfC.add(HAMPTON);
+        listOfC.add(LU);
+        listOfC.add(URVA);
+        listOfC.add(RADFORD);
+        listOfC.add(UVA);
 
-        for(int i = 0; i<listOfC.size();i++)
+        for(College x: listOfC)
         {
             boolean includes = true;
-            String temp = sample2;
             String chare = "";
-            for(int j = 0; j<temp.length();j++)
+            for(int j = 0; j<userCode.length();j++)
             {
-                chare = Character.toString(temp.charAt(j));
-                if(!listOfC.get(i).getCode().contains(chare))
+                chare = Character.toString(userCode.charAt(j));
+                if(!x.getCode().contains(chare))
                 {
                     includes = false;
                 }
@@ -58,9 +61,13 @@ public class ResultScreen extends AppCompatActivity {
 
             if(includes)
             {
-                sample3 = sample3 + "\n"+  listOfC.get(i).getName() + "\n"+ "The Main Field of study is : " + listOfC.get(i).getFieldOfStudy()+ "\n"+ "The Tution and Fees Per Year : " +listOfC.get(i).getTuition()+ "\n"+ "Environment : " +listOfC.get(i).getEnvironment()+ "\n"+ "Size : " +listOfC.get(i).getSize() + "\n"+ "Type : " +listOfC.get(i).getType() + "\n" +"\n";
+                finalArray.add(x);
             }
-}
-        sampleView.setText(sample3);
- }
+        }
+
+        for(College x:finalArray){
+            resultText+= "\n"+  ">>>" + x.getName() + "\n"+ "Main Field of study : " + x.getFieldOfStudy()+ "\n"+ "Tution and Fees Per Year : " + x.getTuition()+ "\n"+ "Environment : " + x.getEnvironment()+ "\n"+ "Size : " + x.getSize() + "\n"+ "Type : " + x.getType() + "\n" +"\n";
+        }
+        resultView.setText(resultText);
+    }
 }
