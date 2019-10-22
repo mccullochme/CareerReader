@@ -77,7 +77,8 @@ public class SelectionScreen extends AppCompatActivity {
         if(business.isChecked())
         {
             userCode = userCode + "c";
-        }if(health.isChecked())
+        }
+        if(health.isChecked())
         {
             userCode = userCode + "d";
         }
@@ -85,6 +86,7 @@ public class SelectionScreen extends AppCompatActivity {
         {
             userCode = userCode + "e";
         }
+        userCode+=",";
         if(zeroToFive.isChecked())
         {
             userCode = userCode + "f";
@@ -101,6 +103,7 @@ public class SelectionScreen extends AppCompatActivity {
         {
             userCode = userCode + "i";
         }
+        userCode+=",";
         if(rural.isChecked())
         {
             userCode = userCode + "j";
@@ -113,6 +116,7 @@ public class SelectionScreen extends AppCompatActivity {
         {
             userCode = userCode + "l";
         }
+        userCode+=",";
         if(small.isChecked())
         {
             userCode = userCode + "m";
@@ -125,6 +129,7 @@ public class SelectionScreen extends AppCompatActivity {
         {
             userCode = userCode + "o";
         }
+        userCode+=",";
         if(publicC.isChecked())
         {
             userCode = userCode + "p";
