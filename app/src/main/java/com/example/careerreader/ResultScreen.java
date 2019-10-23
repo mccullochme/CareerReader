@@ -65,15 +65,19 @@ public class ResultScreen extends AppCompatActivity {
             if(!boolList.contains(false)){
                 finalArray.add(x);
             }
+
+            boolList.clear();
         }
+
 
         for(College x:finalArray){
             resultText+= "\n"+  ">>>" + x.getName() + "\n"+ "Main Field of study : " + x.getFieldOfStudy()+ "\n"+ "Tution and Fees Per Year : " + x.getTuition()+ "\n"+ "Environment : " + x.getEnvironment()+ "\n"+ "Size : " + x.getSize() + "\n"+ "Type : " + x.getType() + "\n" +"\n";
         }
 
-          resultView.setText(resultText);
+        resultView.setText(resultText);
 
     }
+
     public void goBack(View view) {
         Intent intent = new Intent(ResultScreen.this, SelectionScreen.class);
         startActivity(intent);
