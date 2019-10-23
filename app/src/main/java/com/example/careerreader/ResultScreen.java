@@ -1,6 +1,9 @@
 package com.example.careerreader;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
 import android.os.Bundle;
 
@@ -12,6 +15,8 @@ public class ResultScreen extends AppCompatActivity {
     String userCode = "";
     ArrayList<College> listOfC = new ArrayList<College>();
     ArrayList<College> finalArray = new ArrayList<College>();
+    String[] userArry;
+    ArrayList<Boolean> boolList = new ArrayList<Boolean>();
 
     /**
      * This is where all colleges will be stored
@@ -33,6 +38,8 @@ public class ResultScreen extends AppCompatActivity {
         setContentView(R.layout.screen_result);
         resultView = findViewById(R.id.resultView);
         userCode = getIntent().getExtras() .getString("userCode");
+        userArry  = userCode.split(",");
+        System.out.println("--------------"+ userCode);
 
         //array list of all colleges
         listOfC.add(VCU);
@@ -46,21 +53,16 @@ public class ResultScreen extends AppCompatActivity {
         listOfC.add(RADFORD);
         listOfC.add(UVA);
 
-        for(College x: listOfC)
-        {
-            boolean includes = true;
-            String chare = "";
-            for(int j = 0; j<userCode.length();j++)
-            {
-                chare = Character.toString(userCode.charAt(j));
-                if(!x.getCode().contains(chare))
-                {
-                    includes = false;
+        for(College x: listOfC){
+            for(int i=0; i<userArry.length; i++){
+                if ((!userArry[i].equals("")) && userArry[i].contains(Character.toString(x.getCode().charAt(i)))){
+                    boolList.add(true);
+                }
+                else if(!userArry[i].equals("")){
+                    boolList.add(false);
                 }
             }
-
-            if(includes)
-            {
+            if(!boolList.contains(false)){
                 finalArray.add(x);
             }
         }
@@ -68,6 +70,12 @@ public class ResultScreen extends AppCompatActivity {
         for(College x:finalArray){
             resultText+= "\n"+  ">>>" + x.getName() + "\n"+ "Main Field of study : " + x.getFieldOfStudy()+ "\n"+ "Tution and Fees Per Year : " + x.getTuition()+ "\n"+ "Environment : " + x.getEnvironment()+ "\n"+ "Size : " + x.getSize() + "\n"+ "Type : " + x.getType() + "\n" +"\n";
         }
-        resultView.setText(resultText);
+
+          resultView.setText(resultText);
+
+    }
+    public void goBack(View view) {
+        Intent intent = new Intent(ResultScreen.this, SelectionScreen.class);
+        startActivity(intent);
     }
 }
