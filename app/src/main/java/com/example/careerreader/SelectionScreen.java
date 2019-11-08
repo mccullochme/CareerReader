@@ -145,4 +145,8 @@ public class SelectionScreen extends AppCompatActivity {
 
     }
 
+    public void setUserCode(){
+
+    }
+
 }
