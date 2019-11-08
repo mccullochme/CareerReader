@@ -9,15 +9,29 @@
 
     <Button
         android:id="@+id/FindCollegeButton"
-        android:layout_width="267dp"
-        android:layout_height="65dp"
+        android:layout_width="315dp"
+        android:layout_height="43dp"
         android:onClick="findACollege"
         android:text="Find a College that best suits you"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393" />
+        app:layout_constraintVertical_bias="0.295" />
+
+    <Button
+        android:id="@+id/FindMajorButton"
+        android:layout_width="315dp"
+        android:layout_height="43dp"
+        android:onClick="findAMajor"
+        android:text="FIND A MAJOR THAT BEST SUITS YOU"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.427"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FindCollegeButton"
+        app:layout_constraintVertical_bias="0.285" />
 
     <TextView
         android:id="@+id/textView"

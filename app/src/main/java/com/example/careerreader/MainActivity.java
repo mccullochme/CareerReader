@@ -22,4 +22,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void findAMajor(View view){
+        Intent intent = new Intent(MainActivity.this , MajorSelectionScreen.class);
+        startActivity(intent);
+    }
 }
