@@ -3,14 +3,10 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.rule.ActivityTestRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.After;
-import org.junit.Before;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
@@ -128,12 +124,5 @@ public class MainActivityTest {
         onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
 
-    @Before
-    public void setUp() throws Exception {
 
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
 }
