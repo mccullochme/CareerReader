@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -23,14 +24,22 @@ public class Main2Activity extends AppCompatActivity {
         fieldOfStudy = getIntent().getExtras().getString("fieldOfStudy");
 
 
+
+        }
+        public String getMajor(){
+
+    return null;
         }
 
-    }
+
+
+
+
 
     private String readFile()
     {
         String myData = "";
-        File myExternalFile = new File("test.txt");
+        File myExternalFile = new File("Majors.txt");
         try {
             FileInputStream fis = new FileInputStream(myExternalFile);
             DataInputStream in = new DataInputStream(fis);
@@ -38,7 +47,9 @@ public class Main2Activity extends AppCompatActivity {
 
             String strLine;
             while ((strLine = br.readLine()) != null) {
-                myData = myData + strLine + "\n";
+                if(strLine == fieldOfStudy){
+                    myData = strLine;
+                }
             }
             br.close();
             in.close();
