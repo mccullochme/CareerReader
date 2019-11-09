@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -36,28 +36,29 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-    private String readFile()
-    {
-        String myData = "";
-        File myExternalFile = new File("Majors.txt");
-        try {
-            FileInputStream fis = new FileInputStream(myExternalFile);
-            DataInputStream in = new DataInputStream(fis);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+    public static String readIn(String in) throws IOException{
+        File f1=new File("Majors.txt");
+        String[] words=null;
+        FileReader fr = new FileReader(f1);
+        BufferedReader br = new BufferedReader(fr);
+        String s;
+        String input=in;
+        String word = "";
+        while((s=br.readLine())!=null)
+        {
+            words=s.split(" ");
+            for(int i = 0 ; i < words.length ; i++)
+            {
 
-            String strLine;
-            while ((strLine = br.readLine()) != null) {
-                if(strLine == fieldOfStudy){
-                    myData = strLine;
+                if (input.equals(words[i]))
+                {
+                    word = words[i];
+                    return word;
                 }
             }
-            br.close();
-            in.close();
-            fis.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        return myData;
+        fr.close();
+    return null;
     }
 
 }
