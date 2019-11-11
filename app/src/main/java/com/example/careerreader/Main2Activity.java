@@ -8,8 +8,6 @@ import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 
@@ -26,9 +24,9 @@ public class Main2Activity extends AppCompatActivity {
 
 
         }
-        public String getMajor(){
-
-    return null;
+        public String getMajor()throws IOException{
+        readIn(fieldOfStudy);
+        return null;
         }
 
 
