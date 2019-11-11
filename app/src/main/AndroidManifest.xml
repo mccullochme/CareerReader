@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ResultScreen"></activity>
         <activity android:name=".SelectionScreen" />
+        <activity android:name=".MajorSelectionScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
