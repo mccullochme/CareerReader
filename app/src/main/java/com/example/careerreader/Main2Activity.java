@@ -18,21 +18,17 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        //TextView startText = (TextView) findViewById(R.id.textView5);
+        TextView startText = (TextView) findViewById(R.id.textView);
         fieldOfStudy = getIntent().getExtras().getString("fieldOfStudy");
 
 
 
         }
-        public String getMajor()throws IOException{
-        readIn(fieldOfStudy);
-        return null;
+        public String getMajor(FieldOfStudy fStudy)throws IOException{
+        String major = "";
+        major = readIn();
+        return major;
         }
-
-
-
-
-
 
     public static String readIn(String in) throws IOException{
         File f1=new File("Majors.txt");
