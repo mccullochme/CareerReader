@@ -22,23 +22,34 @@
             android:textSize="36sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='left button being "Strongly Disagree"...right most button being "Strongly Agree"' />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:textAlignment="center">
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="125sp"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/submitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="Button" />
+                android:onClick="submitButton"
+                android:text="SUBMIT" />
         </LinearLayout>
 
     </LinearLayout>

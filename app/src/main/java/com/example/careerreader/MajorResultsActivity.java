@@ -2,33 +2,46 @@ package com.example.careerreader;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 
-public class Main2Activity extends AppCompatActivity {
+public class MajorResultsActivity extends AppCompatActivity {
 
-     String fieldOfStudy= "";
+    ArrayList<String> compFields = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        TextView startText = (TextView) findViewById(R.id.textView);
-        fieldOfStudy = getIntent().getExtras().getString("fieldOfStudy");
+        setContentView(R.layout.activity_results_major);
+        TextView startText = (TextView) findViewById(R.id.textView3);
 
-
-
+        //gets String array with compatible fields of study
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            compFields = getIntent().getExtras().getStringArrayList("fieldOfStudyList");
         }
-        public String getMajor(FieldOfStudy fStudy)throws IOException{
+
+        /**
+         * IGNORE THIS I made this to test my class to print the compatible FieldOfStudy
+         */
+        String temp = "";
+        for(String fields: compFields){
+            temp += fields;
+        }
+        startText.setText(temp);
+    }
+
+    public String getMajor(FieldOfStudy fStudy)throws IOException{
         String major = "";
-        major = readIn();
+        //major = readIn();
         return major;
-        }
+    }
 
     public static String readIn(String in) throws IOException{
         File f1=new File("Majors.txt");
