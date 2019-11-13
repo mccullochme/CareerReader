@@ -21,7 +21,6 @@ public class MajorSelectionScreen extends AppCompatActivity {
 
     LinearLayout viewLinLay;
     ArrayList<FieldOfStudy> fosList = new ArrayList<FieldOfStudy>();
-    ArrayList<FieldOfStudy> resultList = new ArrayList<FieldOfStudy>();
 
     FieldOfStudy STEM = new FieldOfStudy("STEM", 0);
     FieldOfStudy socSci = new FieldOfStudy("Social Science", 0);
@@ -30,8 +29,6 @@ public class MajorSelectionScreen extends AppCompatActivity {
     FieldOfStudy art = new FieldOfStudy("Art", 0);
 
     ArrayList<String> compFOSList = new ArrayList<String>();
-
-    int numChecked = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -64,6 +61,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
 
     public boolean allChecked(){
         boolean allChecked = false;
+
         return allChecked;
     }
 
@@ -123,29 +121,21 @@ public class MajorSelectionScreen extends AppCompatActivity {
 
     //method that is called when a radioButton is clicked
     public void onRadioButtonClicked(RadioGroup group, int checkedID){
-        System.out.println("wow"+ checkedID);
-        numChecked++;
         if(group.getTag().equals("STEM")){
             STEM.setTotal(STEM.getTotal() + checkedID/group.getId());
-            System.out.println("wow"+ group.getTag());
         }
         else if(group.getTag().equals("SocialScience")){
             socSci.setTotal(socSci.getTotal() + checkedID/group.getId());
-            System.out.println("wow"+ group.getTag());
         }
         else if(group.getTag().equals("Business")){
             business.setTotal(business.getTotal() + checkedID/group.getId());
-            System.out.println("wow"+ group.getTag());
         }
         else if(group.getTag().equals("Health")){
             health.setTotal(business.getTotal() + checkedID/group.getId());
-            System.out.println("wow"+ group.getTag());
         }
         else if(group.getTag().equals("Art")){
             art.setTotal(art.getTotal() + checkedID/group.getId());
-            System.out.println("wow"+ group.getTag());
         }
-
     }
 
     //compares the total of each field and places the corresponding string into compFOSList
