@@ -136,10 +136,12 @@ public class MajorSelectionScreen extends AppCompatActivity {
             radioGroupNum++;
         }
 
-        //assigns radioButtons of ID 1-125
+        //assigns radioButtons of ID 1-125,m and tag "rb**1-125**"
         for(int i = 0; i <= 124; i++){
             int id = i+1;
             rbList.get(i).setId(id);
+            String tag = "rb" + i;
+            rbList.get(i).setTag(tag);
         }
     }
 
@@ -147,7 +149,6 @@ public class MajorSelectionScreen extends AppCompatActivity {
 
     //method that is called when a radioButton is clicked
     public void onRadioButtonClicked(RadioGroup group, int checkedID){
-        //System.out.println("wow" + checkedID);
         int one = 1;
         if(group.getTag().equals("STEM")){
             STEM.setTotal(STEM.getTotal() + (checkedID - ((group.getId() - one) * 5)));
