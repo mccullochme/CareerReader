@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,7 +21,6 @@ import java.util.ArrayList;
 public class MajorSelectionScreen extends AppCompatActivity {
 
     LinearLayout viewLinLay;
-    ArrayList<FieldOfStudy> fosList = new ArrayList<FieldOfStudy>();
 
     FieldOfStudy STEM = new FieldOfStudy("STEM", 0);
     FieldOfStudy socSci = new FieldOfStudy("Social Science", 0);
@@ -28,6 +28,8 @@ public class MajorSelectionScreen extends AppCompatActivity {
     FieldOfStudy health = new FieldOfStudy("Health", 0);
     FieldOfStudy art = new FieldOfStudy("Art", 0);
 
+    ArrayList<RadioButton> rbList = new ArrayList<RadioButton>();
+    ArrayList<FieldOfStudy> fosList = new ArrayList<FieldOfStudy>();
     ArrayList<String> compFOSList = new ArrayList<String>();
 
     @Override
@@ -57,10 +59,24 @@ public class MajorSelectionScreen extends AppCompatActivity {
             intentNext.putExtra("fieldOfStudyList", compFOSList);
             startActivity(intentNext);
         }
+        else{
+            Toast t = Toast.makeText(this, "Must answer all before submitting", Toast.LENGTH_LONG);
+        }
     }
 
+    //goes through every radioButton and checks if all radioButtons have been checked ie.) total == 25
     public boolean allChecked(){
         boolean allChecked = false;
+        int total = 0;
+        for(RadioButton rb: rbList){
+            if(rb.isChecked()){
+                total++;
+            }
+        }
+
+        if (total == 25){
+            allChecked = true;
+        }
 
         return allChecked;
     }
@@ -112,8 +128,16 @@ public class MajorSelectionScreen extends AppCompatActivity {
             for(int i = 0; i < numButtons; i++) {
                 RadioButton rdbtn = new RadioButton(this);
                 rg.addView(rdbtn);
+                rbList.add(rdbtn);
             }
             radioGroupNum++;
+        }
+
+        //assigns radioButtons of ID 1-125
+        for(int i = 0; i <= 124; i++){
+            int id = i+1;
+            rbList.get(i).setId(id);
+
         }
     }
 
@@ -121,6 +145,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
 
     //method that is called when a radioButton is clicked
     public void onRadioButtonClicked(RadioGroup group, int checkedID){
+        System.out.println("wow" + checkedID);
         if(group.getTag().equals("STEM")){
             STEM.setTotal(STEM.getTotal() + checkedID/group.getId());
         }
