@@ -32,6 +32,8 @@ public class MajorSelectionScreen extends AppCompatActivity {
     ArrayList<FieldOfStudy> fosList = new ArrayList<FieldOfStudy>();
     ArrayList<String> compFOSList = new ArrayList<String>();
 
+    int radioGroupNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -61,6 +63,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
         }
         else{
             Toast t = Toast.makeText(this, "Must answer all before submitting", Toast.LENGTH_LONG);
+            t.show();
         }
     }
 
@@ -85,7 +88,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
     public void generateQuestions() throws IOException{
 
         BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("questions.txt"), StandardCharsets.UTF_8));
-        int radioGroupNum = 1;
+        radioGroupNum = 1;
         while(br.ready()){
 
             //creates textView with corresponding information
@@ -137,7 +140,6 @@ public class MajorSelectionScreen extends AppCompatActivity {
         for(int i = 0; i <= 124; i++){
             int id = i+1;
             rbList.get(i).setId(id);
-
         }
     }
 
@@ -145,21 +147,27 @@ public class MajorSelectionScreen extends AppCompatActivity {
 
     //method that is called when a radioButton is clicked
     public void onRadioButtonClicked(RadioGroup group, int checkedID){
-        System.out.println("wow" + checkedID);
+        //System.out.println("wow" + checkedID);
+        int one = 1;
         if(group.getTag().equals("STEM")){
-            STEM.setTotal(STEM.getTotal() + checkedID/group.getId());
+            STEM.setTotal(STEM.getTotal() + (checkedID - ((group.getId() - one) * 5)));
+            System.out.println("wowSTEM" + STEM.getTotal());
         }
         else if(group.getTag().equals("SocialScience")){
-            socSci.setTotal(socSci.getTotal() + checkedID/group.getId());
+            socSci.setTotal(socSci.getTotal() + (checkedID - ((group.getId() - one) * 5)));
+            System.out.println("wowSocial" + socSci.getTotal());
         }
         else if(group.getTag().equals("Business")){
-            business.setTotal(business.getTotal() + checkedID/group.getId());
+            business.setTotal(business.getTotal() + (checkedID - ((group.getId() - one) * 5)));
+            System.out.println("wowBusiness" + business.getTotal());
         }
         else if(group.getTag().equals("Health")){
-            health.setTotal(business.getTotal() + checkedID/group.getId());
+            health.setTotal(health.getTotal() + (checkedID - ((group.getId() - one) * 5)));
+            System.out.println("wowHealth" + health.getTotal());
         }
         else if(group.getTag().equals("Art")){
-            art.setTotal(art.getTotal() + checkedID/group.getId());
+            art.setTotal(art.getTotal() + (checkedID - ((group.getId() - one) * 5)));
+            System.out.println("wowArt" + art.getTotal());
         }
     }
 
@@ -188,8 +196,6 @@ public class MajorSelectionScreen extends AppCompatActivity {
                 compFOSList.add(bestFOS.getName());
             }
         }
-
-
         return compFOSList;
     }
 
