@@ -19,6 +19,17 @@ public class College {
         this.code = code;
     }
 
+    public College()
+    {
+        this.fieldOfStudy = "";
+        this.environment = "";
+        this.type = "";
+        this.size = 0;
+        this.tuition = 0;
+        this.name = "";
+        this.code = "";
+    }
+
     public String getFieldOfStudy() {
         return fieldOfStudy;
     }

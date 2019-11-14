@@ -158,6 +158,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
             socSci.setTotal(socSci.getTotal() + (checkedID - ((group.getId() - one) * 5)));
             System.out.println("wowSocial" + socSci.getTotal());
         }
+
         else if(group.getTag().equals("Business")){
             business.setTotal(business.getTotal() + (checkedID - ((group.getId() - one) * 5)));
             System.out.println("wowBusiness" + business.getTotal());

@@ -4,6 +4,12 @@ public class FieldOfStudy {
     private int total = 0;
     private String name = "";
 
+    public FieldOfStudy ()
+    {
+        this.name = "";
+        this.total = 0;
+    }
+
     public FieldOfStudy (String name, int total){
         this.name = name;
         this.total = total;
