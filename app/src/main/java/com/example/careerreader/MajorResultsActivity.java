@@ -35,7 +35,7 @@ public class MajorResultsActivity extends AppCompatActivity {
         majors = readIn();
         for(int i = 0 ; i<compFields.size();i++)
         {
-            for(int j = 0; j< majors.length;j++)
+            for(int j = 0; j< 60;j++)
             {
                 if(compFields.get(i).compareTo(majors[j]) ==0)
                 {
@@ -76,20 +76,32 @@ public class MajorResultsActivity extends AppCompatActivity {
     {
         try
         {
+
             File f1 = new File("Majors.txt");
-            Scanner scnr = new Scanner(f1);
+            FileReader fr = new FileReader(f1);
+            BufferedReader br = new BufferedReader(fr);
+            String line = "";
             int i = 0;
-            while(scnr.hasNext())
+            while((line =br.readLine())!= null)
             {
-                words[i] = scnr.nextLine();
+                words[i] = line;
+                i++;
             }
-        }
-        catch(IOException e)
-        {
-            System.out.println("not working " + e);
-        }
-        return words;
-    }
+
+//            File f1 = new File("Majors.txt");
+//            Scanner scnr = new Scanner(f1);
+//            int i = 0;
+//            while(scnr.hasNext())
+//            {
+//                words[i] = scnr.nextLine();
+//            }
+//        }
+//        catch(IOException e)
+//        {
+//            System.out.println("not working " + e);
+//        }
+//        return words;
+//    }
 
 
 //    public String[] readIn() {
@@ -97,18 +109,18 @@ public class MajorResultsActivity extends AppCompatActivity {
 //            File f1 = new File("Majors.txt");
 //            Scanner scnr = new Scanner(f1);
 //            FileReader fr = new FileReader(f1);
-////            BufferedReader br = new BufferedReader(fr);
+//            BufferedReader br = new BufferedReader(fr);
 //            String word = "";
-////        while((s=br.readLine())!=null) {
-////            words = s.split(" ");
-////            for (int i = 0; i < words.length; i++) {
-////
-////                if (input.equals(words[i])) {
-////                    word = words[i];
-////                    return word;
-////                }
-////            }
-////        }
+//        while((s=br.readLine())!=null) {
+//            words = s.split(" ");
+//            for (int i = 0; i < words.length; i++) {
+//
+//                if (input.equals(words[i])) {
+//                    word = words[i];
+//                    return word;
+//////                }
+//////            }
+//////        }
 //            for (int i = 0; i < compFields.size(); i++) {
 //                String temp = ".";
 //                temp = temp + compFields.get(i);
@@ -134,3 +146,10 @@ public class MajorResultsActivity extends AppCompatActivity {
 //        return words;
 //    }
 }
+        catch (IOException e)
+        {
+            System.out.println("not working" + e);
+        }
+        return words;
+        }
+    }
