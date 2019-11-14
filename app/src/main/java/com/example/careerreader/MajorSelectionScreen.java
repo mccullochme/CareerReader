@@ -140,7 +140,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
         for(int i = 0; i <= 124; i++){
             int id = i+1;
             rbList.get(i).setId(id);
-            String tag = "rb" + i;
+            String tag = "rb" + (i+1);
             rbList.get(i).setTag(tag);
         }
     }
