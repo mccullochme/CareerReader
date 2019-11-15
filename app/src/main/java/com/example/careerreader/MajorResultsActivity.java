@@ -49,6 +49,7 @@ public class MajorResultsActivity extends AppCompatActivity {
                 startActivity(intentNext);
             }
         });
+
         for(int i = 0 ; i<compFields.size();i++)
         {
             System.out.println("HELLO" + compFields.size()+ compFields.get(i));
@@ -58,19 +59,23 @@ public class MajorResultsActivity extends AppCompatActivity {
                 {
                     for(int k = j+1; k < j+10;k++)
                     {
-//                        major = major + "\n" + words.get(k);
                         final Button myButton = new Button(this);
                         myButton.setText(words.get(k));
+                        myButton.setTag(words.get(k));
                         myButton.setOnClickListener(new View.OnClickListener(){
                             public void onClick(View v){
                                 Intent intent = new Intent();
                                 intent.setAction(Intent.ACTION_VIEW);
                                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-//                                intent.setData(Uri.parse());
+                                try{
+                                    intent.setData(Uri.parse(getMajorLink(myButton)));
+                                }catch(IOException e){
+                                    throw new RuntimeException(e);
+                                }
+
                                 startActivity(intent);
                             }
                         });
-//                        myButton.setTag();
                         resultView.addView(myButton);
                     }
                 }
@@ -87,6 +92,21 @@ public class MajorResultsActivity extends AppCompatActivity {
         startText.setText(temp);
 
     }
+
+    public String getMajorLink(Button myButton)throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("majorLinks.txt"), StandardCharsets.UTF_8));
+        String majorLink = "";
+        String major = "";
+
+        while(br.ready()){
+            major = br.readLine();
+            if(major.equals(myButton.getTag())){
+                majorLink = br.readLine();
+            }
+        }
+        return majorLink;
+    }
+
     public String getCode(){
         String code = "";
         for(int i = 0; i<compFields.size();i++)
@@ -113,14 +133,6 @@ public class MajorResultsActivity extends AppCompatActivity {
             }
         }
         return code;
-    }
-    public void getMajorLink(Button myButton){
-
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-//        intent.setData(Uri.parse());
-        startActivity(intent);
     }
 
     public void readIn()
