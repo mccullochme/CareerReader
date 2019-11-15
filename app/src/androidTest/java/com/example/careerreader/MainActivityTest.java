@@ -417,7 +417,7 @@ public class MainActivityTest {
                     .perform(swipeUpFaster(), swipeUpFaster(),click());
             val = "rb";
         }
-        //scrolls back to the top to click on the submit button
+        //scrolls back to the top to click on the submit button case
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
         onView(withId(R.id.button6)).perform(ViewActions.scrollTo()).perform(click());
     }
