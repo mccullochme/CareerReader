@@ -151,7 +151,6 @@ public class MainActivityTest {
     }
 
     //Milestone 2
-
     // User Story 1 Select my most compatible major
     @Test
     public void testFindMajorButton() {
@@ -159,7 +158,7 @@ public class MainActivityTest {
         Select my most compatible major
         Scenario 1
         This test, tests the Find a major button , then takes you
-        to the next screen with the compatibility questions
+        to the next screen with the compatibility statements
         */
         onView(withId(R.id.FindMajorButton)).perform(click());
 
@@ -245,6 +244,7 @@ public class MainActivityTest {
         }
         //this return to the top and clicks on the submit button
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
+        onView(allOf(withTagValue(is((Object) "Liberal Studies")), isDisplayed())).perform(click());
     }
     @Test
     public void testStemLink(){
@@ -276,6 +276,8 @@ public class MainActivityTest {
         }
         //this returns to the top and clicks the submit button
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
+        onView(allOf(withTagValue(is((Object) "Petroleum Engineering")), isDisplayed())).perform(click());
+
     }
     @Test
     public void testBusinessLink(){
@@ -316,13 +318,14 @@ public class MainActivityTest {
         }
         //scrolls back to the top to click on the submit button
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
+        onView(allOf(withTagValue(is((Object) "Entrepreneurship")), isDisplayed())).perform(click());
     }
 
 //    // User Story 3 Find a college based off of major
     @Test
     public void testFindStemCollegeFunction(){
         /*
-        Find a college based off of major
+        Find a college based off of major preferences
         Scenario 1
         This test, tests the when "Find College" is clicked at bottom of
         screen of the STEM results page, then it shows possible colleges with corresponding
@@ -345,8 +348,9 @@ public class MainActivityTest {
                     .perform(swipeUpFaster(), swipeUpFaster(), click());
             val = "rb";
         }
-        //this returns to the top to click on the submit button
+        //this returns to the top and clicks the submit button
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.button6)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
     public void testFindArtCollegeFunction(){
@@ -376,6 +380,7 @@ public class MainActivityTest {
         }
         //this returns to the top to click the submit button
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.button6)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
     public void testFindBusinessCollegeFunction(){
@@ -414,6 +419,7 @@ public class MainActivityTest {
         }
         //scrolls back to the top to click on the submit button
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.button6)).perform(ViewActions.scrollTo()).perform(click());
     }
 
 
