@@ -41,7 +41,7 @@ public class MajorResultsActivity extends AppCompatActivity {
                 if(compFields.get(i).equals(words.get(j)))
                 {
 
-                    for(int k = j+1; k<=j+10;k++)
+                    for(int k = j+1; k < j+10;k++)
                     {
                         major = major + "\n" + words.get(k);
 
