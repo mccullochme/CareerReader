@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,7 +17,7 @@ import java.util.Scanner;
 public class MajorResultsActivity extends AppCompatActivity {
 
     ArrayList<String> compFields = new ArrayList<String>();
-    String[] words = null;
+    ArrayList<String> words = new ArrayList<String>();
     String major = "";
 
     @Override
@@ -30,18 +32,19 @@ public class MajorResultsActivity extends AppCompatActivity {
         if (bundle != null) {
             compFields = getIntent().getExtras().getStringArrayList("fieldOfStudyList");
         }
-
-        String [] majors = new String[60];
-        majors = readIn();
+        readIn();
         for(int i = 0 ; i<compFields.size();i++)
         {
-            for(int j = 0; j< 60;j++)
+            System.out.println("HELLO" + compFields.size()+ compFields.get(i));
+            for(int j = 0; j< words.size();j++)
             {
-                if(compFields.get(i).compareTo(majors[j]) ==0)
+                if(compFields.get(i).equals(words.get(j)))
                 {
+
                     for(int k = j+1; k<=j+10;k++)
                     {
-                        major = major + majors[k];
+                        major = major + "\n" + words.get(k);
+
                     }
                 }
             }
@@ -56,14 +59,7 @@ public class MajorResultsActivity extends AppCompatActivity {
             temp += fields;
         }
         startText.setText(temp);
-//
-//        String[] majors = readIn();
-//        temp = "";
-//        for(String major : majors)
-//        {
-//            temp += major;
-//        }
-//        majorText.setText("lebron");
+
     }
 
     public String getMajor(FieldOfStudy fStudy) throws IOException {
@@ -72,84 +68,25 @@ public class MajorResultsActivity extends AppCompatActivity {
         return major;
     }
 
-    public String[] readIn()
+    public void readIn()
     {
         try
         {
-
-            File f1 = new File("Majors.txt");
-            FileReader fr = new FileReader(f1);
-            BufferedReader br = new BufferedReader(fr);
+            BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("Majors.txt"), StandardCharsets.UTF_8));
             String line = "";
             int i = 0;
-            while((line =br.readLine())!= null)
+            line = br.readLine();
+            while(br.ready())
             {
-                words[i] = line;
+                words.add(line);
                 i++;
+                line = br.readLine();
             }
 
-//            File f1 = new File("Majors.txt");
-//            Scanner scnr = new Scanner(f1);
-//            int i = 0;
-//            while(scnr.hasNext())
-//            {
-//                words[i] = scnr.nextLine();
-//            }
-//        }
-//        catch(IOException e)
-//        {
-//            System.out.println("not working " + e);
-//        }
-//        return words;
-//    }
-
-
-//    public String[] readIn() {
-//        try {
-//            File f1 = new File("Majors.txt");
-//            Scanner scnr = new Scanner(f1);
-//            FileReader fr = new FileReader(f1);
-//            BufferedReader br = new BufferedReader(fr);
-//            String word = "";
-//        while((s=br.readLine())!=null) {
-//            words = s.split(" ");
-//            for (int i = 0; i < words.length; i++) {
-//
-//                if (input.equals(words[i])) {
-//                    word = words[i];
-//                    return word;
-//////                }
-//////            }
-//////        }
-//            for (int i = 0; i < compFields.size(); i++) {
-//                String temp = ".";
-//                temp = temp + compFields.get(i);
-//                while (scnr.hasNext()) {
-//                    String temp1 = scnr.nextLine();
-//                    if (temp.compareTo(temp1) == 0) {
-//                        int j = 0;
-//                        while (j < 10) {
-//                            word = scnr.nextLine();
-//                            words[j] = word;
-//                            System.out.println(word);
-//                            j++;
-//                        }
-//                    }
-//                }
-//
-//            }
-//        }
-//        catch (IOException e)
-//        {
-//            System.out.println(e);
-//        }
-//        return words;
-//    }
 }
         catch (IOException e)
         {
             System.out.println("not working" + e);
         }
-        return words;
         }
     }
