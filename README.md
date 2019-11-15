@@ -15,3 +15,4 @@ Project: CareerReader
 -the most difficult part was finding a way to get the ID of the radio buttons since we created them dynamically.
 -we accomplished this by setting the button to a tag and getting the button by use of the tag
 -our future iteration will encapsulate the find a job feature
+-the design pattern we chose to implement was the facade design pattern, we used the design pattern to encapsulate the object classes we are using into one so we can access the methods in one place.
