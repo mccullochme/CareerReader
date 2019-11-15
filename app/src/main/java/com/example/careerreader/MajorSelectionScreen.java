@@ -53,6 +53,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
         startActivity(goBack);
     }
 
+    //checks if all radioButtons are clicked before submitting, calls a toast if not
     public void submitButton(View view){
 
         if (allChecked()) {
@@ -96,6 +97,8 @@ public class MajorSelectionScreen extends AppCompatActivity {
             String strng = br.readLine();
             tv.setText(strng);
             viewLinLay.addView(tv);
+
+            //create a text view that indicates strongly disagree-------strongly agree
 
             //creates radioGroup with horizontal layout
             RadioGroup rg = new RadioGroup(this);
@@ -182,20 +185,17 @@ public class MajorSelectionScreen extends AppCompatActivity {
         fosList.add(health);
         fosList.add(art);
 
-        FieldOfStudy bestFOS = fosList.get(0);
-        int highNum = 0;
+        int highNum = fosList.get(0).getTotal();
 
         for(int i = 0; i < fosList.size()-1; i++) {
             int next = i + 1;
-            highNum = bestFOS.getTotal();
             if (highNum < fosList.get(next).getTotal()) {
                 highNum = fosList.get(next).getTotal();
-                bestFOS = fosList.get(next);
             }
         }
         for(FieldOfStudy fos: fosList){
             if(fos.getTotal() == highNum){
-                compFOSList.add(bestFOS.getName());
+                compFOSList.add(fos.getName());
             }
         }
         return compFOSList;
