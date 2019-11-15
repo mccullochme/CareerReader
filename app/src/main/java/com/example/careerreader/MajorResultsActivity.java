@@ -39,6 +39,16 @@ public class MajorResultsActivity extends AppCompatActivity {
             compFields = getIntent().getExtras().getStringArrayList("fieldOfStudyList");
         }
         readIn();
+        Button button = findViewById(R.id.button6);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userCode = getCode();
+                Intent intentNext = new Intent(MajorResultsActivity.this , ResultScreen.class);
+                intentNext.putExtra("userCode", userCode);
+                startActivity(intentNext);
+            }
+        });
         for(int i = 0 ; i<compFields.size();i++)
         {
             System.out.println("HELLO" + compFields.size()+ compFields.get(i));
@@ -56,11 +66,11 @@ public class MajorResultsActivity extends AppCompatActivity {
                                 Intent intent = new Intent();
                                 intent.setAction(Intent.ACTION_VIEW);
                                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                                intent.setData(Uri.parse());
+//                                intent.setData(Uri.parse());
                                 startActivity(intent);
                             }
                         });
-                        myButton.setTag();
+//                        myButton.setTag();
                         resultView.addView(myButton);
                     }
                 }
@@ -77,12 +87,39 @@ public class MajorResultsActivity extends AppCompatActivity {
         startText.setText(temp);
 
     }
+    public String getCode(){
+        String code = "";
+        for(int i = 0; i<compFields.size();i++)
+        {
+            if(compFields.get(i).equals("STEM"))
+            {
+                code = code + "a";
+            }
+            if(compFields.get(i).equals("SocialScience"))
+            {
+                code = code + "b";
+            }
+            if(compFields.get(i).equals("Business"))
+            {
+                code = code + "c";
+            }
+            if(compFields.get(i).equals("Health"))
+            {
+                code = code + "d";
+            }
+            if(compFields.get(i).equals("Art"))
+            {
+                code = code + "e";
+            }
+        }
+        return code;
+    }
     public void getMajorLink(Button myButton){
 
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse());
+//        intent.setData(Uri.parse());
         startActivity(intent);
     }
 
