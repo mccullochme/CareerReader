@@ -8,7 +8,7 @@ International Business
 Business Administration
 Accounting
 Human Resources Management
-Management Science
+Project Management
 Art
 Liberal Studies
 Foreign Languages and Literature's
@@ -23,7 +23,7 @@ Cinematography and Film Production
 STEM
 Petroleum Engineering
 Atomic or Molecular Physics
-Management Science
+Network and System Administration
 Information Technology
 Water Resources Engineering
 Computer Engineering
