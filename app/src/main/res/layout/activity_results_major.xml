@@ -13,25 +13,21 @@
         tools:layout_editor_absoluteY="207dp">
 
         <LinearLayout
+            android:id="@+id/resultVIEW"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:text="Based on your selections, these are the most compatible fields of study:"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="677dp"
-                android:text="TextView" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
