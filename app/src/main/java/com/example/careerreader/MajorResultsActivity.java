@@ -82,17 +82,16 @@ public class MajorResultsActivity extends AppCompatActivity {
             }
         }
 
-        /**
-         * IGNORE THIS I made this to test my class to print the compatible FieldOfStudy
-         */
-        String temp = "";
+        //sets heading of majorResultsScreen
+        String temp = "Your compatible majors for your field(s) of study are: ";
         for (String fields : compFields) {
-            temp += fields;
+            temp += fields + ", ";
         }
         startText.setText(temp);
 
     }
 
+    //gets corresponding link for major, to be searched in google
     public String getMajorLink(Button myButton)throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("majorLinks.txt"), StandardCharsets.UTF_8));
         String majorLink = "";
