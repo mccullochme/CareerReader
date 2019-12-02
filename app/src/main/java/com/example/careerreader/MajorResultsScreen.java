@@ -3,6 +3,7 @@ package com.example.careerreader;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -10,49 +11,51 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
-public class MajorResultsActivity extends AppCompatActivity {
+public class MajorResultsScreen extends AppCompatActivity {
 
     ArrayList<String> compFields = new ArrayList<String>();
     ArrayList<String> words = new ArrayList<String>();
-    String major = "";
     LinearLayout resultView;
+    String parentClass = "MajorResultsScreen";
+
+    //sharedPreference to save the compatible majors when coming back from CollegeResultsScreen
+    //private SharedPreferences compFieldsSharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_results_major);
-        //gets String array with compatible fields of study
+        setContentView(R.layout.activity_major_results_screen);
         TextView startText = (TextView) findViewById(R.id.textView3);
         resultView = findViewById(R.id.resultVIEW);
 
+        //gets array of Strings with compatible fields of study
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             compFields = getIntent().getExtras().getStringArrayList("fieldOfStudyList");
         }
         readIn();
-        Button button = findViewById(R.id.button6);
+        Button button = findViewById(R.id.findCollegeWithMajor);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userCode = getCode();
-                Intent intentNext = new Intent(MajorResultsActivity.this , ResultScreen.class);
-                intentNext.putExtra("userCode", userCode);
+                String userCode = getCollegeCode();
+                Bundle extras = new Bundle();
+                extras.putString("userCode", userCode);
+                extras.putString("parentClass", parentClass);
+                Intent intentNext = new Intent(MajorResultsScreen.this , CollegeResultsScreen.class);
+                intentNext.putExtras(extras);
                 startActivity(intentNext);
             }
         });
 
         for(int i = 0 ; i<compFields.size();i++)
         {
-            System.out.println("HELLO" + compFields.size()+ compFields.get(i));
             for(int j = 0; j< words.size();j++)
             {
                 if(compFields.get(i).equals(words.get(j)))
@@ -83,7 +86,7 @@ public class MajorResultsActivity extends AppCompatActivity {
         }
 
         //sets heading of majorResultsScreen
-        String temp = "Your compatible majors for your field(s) of study are: ";
+        String temp = "Your compatible majors for ";
         for (String fields : compFields) {
             temp += fields + ", ";
         }
@@ -106,7 +109,8 @@ public class MajorResultsActivity extends AppCompatActivity {
         return majorLink;
     }
 
-    public String getCode(){
+    //gets code for college to send to College results screen
+    public String getCollegeCode(){
         String code = "";
         for(int i = 0; i<compFields.size();i++)
         {
@@ -149,10 +153,9 @@ public class MajorResultsActivity extends AppCompatActivity {
                 line = br.readLine();
             }
 
-}
-        catch (IOException e)
-        {
+        }
+        catch (IOException e) {
             System.out.println("not working" + e);
         }
-        }
     }
+}

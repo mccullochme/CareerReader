@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MajorResultsActivity">
+    tools:context=".MajorResultsScreen">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -29,7 +29,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/findCollegeWithMajor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Find a college with the above field of Study" />

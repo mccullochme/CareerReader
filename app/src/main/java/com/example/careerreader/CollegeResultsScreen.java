@@ -9,10 +9,11 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class ResultScreen extends AppCompatActivity {
+public class CollegeResultsScreen extends AppCompatActivity {
     TextView resultView;
     String resultText= "";
     String userCode = "";
+    String parentClass = "";
     ArrayList<College> listOfC = new ArrayList<College>();
     ArrayList<College> finalArray = new ArrayList<College>();
     String[] userArry;
@@ -35,11 +36,11 @@ public class ResultScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.screen_result);
+        setContentView(R.layout.activity_college_results_screen);
         resultView = findViewById(R.id.resultView);
-        userCode = getIntent().getExtras() .getString("userCode");
+        userCode = getIntent().getExtras().getString("userCode");
+        parentClass = getIntent().getExtras().getString("parentClass");
         userArry  = userCode.split(",");
-        System.out.println("--------------"+ userCode);
 
         //array list of all colleges
         listOfC.add(VCU);
@@ -79,7 +80,13 @@ public class ResultScreen extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        Intent intent = new Intent(ResultScreen.this, SelectionScreen.class);
-        startActivity(intent);
+        if (parentClass.equals("CollegeSelectionScreen")){
+            Intent intent = new Intent(CollegeResultsScreen.this, CollegeSelectionScreen.class);
+            startActivity(intent);
+        }
+        else if(parentClass.equals("MajorResultsScreen")) {
+            Intent intent = new Intent(CollegeResultsScreen.this, MajorResultsScreen.class);
+            startActivity(intent);
+        }
     }
 }

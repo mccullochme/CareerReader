@@ -1,6 +1,4 @@
 package com.example.careerreader;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
@@ -19,7 +17,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withTagKey;
 import static androidx.test.espresso.matcher.ViewMatchers.withTagValue;
 import static org.hamcrest.Matchers.is;
@@ -49,7 +46,7 @@ public class MainActivityTest {
         This test, tests the FindCollegeButton that will then
         take you to the next page where you are prompt to select major
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
     }
 
     @Test
@@ -59,7 +56,7 @@ public class MainActivityTest {
         Scenario 2
         This test, tests the ability to select a major by clicking on a checkbox
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
         onView(withId(R.id.stemBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
         onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
@@ -71,7 +68,7 @@ public class MainActivityTest {
         Scenario 3
         This test, tests the ability to select a major by clicking on a checkbox
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
         onView(withId(R.id.stemBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
         onView(withId(R.id.socialScienceBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
         onView(withId(R.id.businessBox)).check(matches(isNotChecked())).perform(scrollTo(), click());
@@ -89,7 +86,7 @@ public class MainActivityTest {
         This test, tests the FindCollegeButton that will then
         take you to the next page where you are prompt to select a price range
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
     }
     @Test
     public void testPriceRange1(){
@@ -98,7 +95,7 @@ public class MainActivityTest {
         Scenario 2
         This tests the ability to select a college in the price range between $20,00-30,00
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
         onView(withId(R.id.twentyToThirty)).perform(click());
         onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
@@ -109,7 +106,7 @@ public class MainActivityTest {
         Scenario 3
         This tests the ability to select a college in the price range between $0-$20,00 and $40,00
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
         onView(withId(R.id.zeroToTwenty)).perform(click());
         onView(withId(R.id.fortyPlus)).perform(click());
         onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
@@ -122,7 +119,7 @@ public class MainActivityTest {
         Scenario 1
         This test, tests the ability to select only private schools
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
         onView(withId(R.id.privateBox)).perform(ViewActions.scrollTo()).perform(click());
         onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
@@ -133,7 +130,7 @@ public class MainActivityTest {
         Scenario 2
         This test, tests the ability to select only public schools
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
         onView(withId(R.id.publicBox)).perform(ViewActions.scrollTo()).perform(click());
         onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
     }
@@ -144,7 +141,7 @@ public class MainActivityTest {
         Scenario 3
         This test, tests the ability to select both public and private schools
         */
-        onView(withId(R.id.FindCollegeButton)).perform(click());
+        onView(withId(R.id.findCollegeButton)).perform(click());
         onView(withId(R.id.publicBox)).perform(ViewActions.scrollTo()).perform(click());
         onView(withId(R.id.privateBox)).perform(ViewActions.scrollTo()).perform(click());
         onView(withId(R.id.nextButton)).perform(ViewActions.scrollTo()).perform(click());
@@ -160,7 +157,7 @@ public class MainActivityTest {
         This test, tests the Find a major button , then takes you
         to the next screen with the compatibility statements
         */
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
 
     }
 
@@ -174,7 +171,7 @@ public class MainActivityTest {
         the top ten STEM majors
         */
         String val = "rb";
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
         for (int i = 5; i <= 25; i = i + 5) {
             String pos = Integer.toString(i);
             val += pos;
@@ -201,7 +198,7 @@ public class MainActivityTest {
         then clicks the submit button to be take to the next page where it'll show all
         majors
          */
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
         String val = "rb";
         for(int i  = 5; i <=125; i = i + 5 ) {
             String pos = Integer.toString(i);
@@ -227,7 +224,7 @@ public class MainActivityTest {
         */
         //this selects the lowest value buttons
         String val = "rb";
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
         for(int j  = 1; j < 100; j = j + 5 ) {
             String pos = Integer.toString(j);
             val += pos;
@@ -259,7 +256,7 @@ public class MainActivityTest {
         */
         //this selects the first buttons with the highest value for STEM
         String val = "rb";
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
         for (int i = 5; i <= 25; i = i + 5) {
             String pos = Integer.toString(i);
             val += pos;
@@ -292,7 +289,7 @@ public class MainActivityTest {
         */
         //this selects the radio buttons with the lowest value
         String val = "rb";
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
         for(int j  = 1; j < 50; j = j + 5 ) {
             String pos = Integer.toString(j);
             val += pos;
@@ -333,7 +330,7 @@ public class MainActivityTest {
         */
         //this clicks on the first 5 questions with the highest value for STEM
         String val = "rb";
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
         for (int i = 5; i <= 25; i = i + 5) {
             String pos = Integer.toString(i);
             val += pos;
@@ -350,7 +347,7 @@ public class MainActivityTest {
         }
         //this returns to the top and clicks the submit button
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
-        onView(withId(R.id.button6)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.findCollegeWithMajor)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
     public void testFindArtCollegeFunction(){
@@ -363,7 +360,7 @@ public class MainActivityTest {
         */
         //this clicks the radio buttons before the desired questions with the lowest values
         String val = "rb";
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
         for(int j  = 1; j < 100; j = j + 5 ) {
             String pos = Integer.toString(j);
             val += pos;
@@ -380,7 +377,7 @@ public class MainActivityTest {
         }
         //this returns to the top to click the submit button
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
-        onView(withId(R.id.button6)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.findCollegeWithMajor)).perform(ViewActions.scrollTo()).perform(click());
     }
     @Test
     public void testFindBusinessCollegeFunction(){
@@ -393,7 +390,7 @@ public class MainActivityTest {
         */
         //this clicks lowest value radio buttons before reaching the desired ones
         String val = "rb";
-        onView(withId(R.id.FindMajorButton)).perform(click());
+        onView(withId(R.id.findMajorButton)).perform(click());
         for(int j  = 1; j < 50; j = j + 5 ) {
             String pos = Integer.toString(j);
             val += pos;
@@ -419,7 +416,7 @@ public class MainActivityTest {
         }
         //scroll back to the top to click on the submit button case
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
-        onView(withId(R.id.button6)).perform(ViewActions.scrollTo()).perform(click());
+        onView(withId(R.id.findCollegeWithMajor)).perform(ViewActions.scrollTo()).perform(click());
     }
 
 

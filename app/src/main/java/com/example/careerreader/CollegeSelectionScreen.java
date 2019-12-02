@@ -8,9 +8,10 @@ import android.view.View;
 import android.os.Bundle;
 import android.widget.CheckBox;
 
-public class SelectionScreen extends AppCompatActivity {
+public class CollegeSelectionScreen extends AppCompatActivity {
 
     String userCode = "";
+    String parentClass = "CollegeSelectionScreen";
 
     CheckBox stem ;
     CheckBox socialScience;
@@ -35,7 +36,7 @@ public class SelectionScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.screen_selection);
+        setContentView(R.layout.activity_college_selection_screen);
         backButton = findViewById(R.id.backButton);
          stem = findViewById(R.id.stemBox);
          socialScience = findViewById(R.id.socialScienceBox);
@@ -58,10 +59,11 @@ public class SelectionScreen extends AppCompatActivity {
 
     public void goBack(View view)
     {
-        Intent intent = new Intent(SelectionScreen.this , MainActivity.class);
+        Intent intent = new Intent(CollegeSelectionScreen.this , MainActivity.class);
         startActivity(intent);
     }
 
+    //creates a userCode to be compared to the college code
     public void Next(View view){
 
         userCode="";
@@ -139,14 +141,17 @@ public class SelectionScreen extends AppCompatActivity {
             userCode = userCode + "q";
         }
 
-        Intent intentNext = new Intent(SelectionScreen.this , ResultScreen.class);
-        intentNext.putExtra("userCode", userCode);
+        Bundle extras = new Bundle();
+        extras.putString("userCode", userCode);
+        extras.putString("parentClass", parentClass);
+        Intent intentNext = new Intent(CollegeSelectionScreen.this , CollegeResultsScreen.class);
+        intentNext.putExtras(extras);
         startActivity(intentNext);
 
     }
 
     public void setUserCode(){
-
+        //change to switch cases
     }
 
 }

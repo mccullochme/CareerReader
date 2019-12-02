@@ -3,7 +3,6 @@ package com.example.careerreader;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -58,7 +57,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
 
         if (allChecked()) {
             getCompatibleField();
-            Intent intentNext = new Intent(MajorSelectionScreen.this , MajorResultsActivity.class);
+            Intent intentNext = new Intent(MajorSelectionScreen.this , MajorResultsScreen.class);
             intentNext.putExtra("fieldOfStudyList", compFOSList);
             startActivity(intentNext);
         }

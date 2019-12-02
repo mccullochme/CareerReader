@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-
-import android.os.Bundle;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,12 +15,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void findACollege(View view){
-        Intent intent = new Intent(MainActivity.this , SelectionScreen.class);
+        Intent intent = new Intent(MainActivity.this , CollegeSelectionScreen.class);
         startActivity(intent);
     }
 
     public void findAMajor(View view){
         Intent intent = new Intent(MainActivity.this , MajorSelectionScreen.class);
+        startActivity(intent);
+    }
+
+    public void findAJob(View view){
+        Intent intent = new Intent(MainActivity.this , JobSearchScreen.class);
         startActivity(intent);
     }
 }
