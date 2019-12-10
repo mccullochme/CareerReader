@@ -318,7 +318,7 @@ public class MainActivityTest {
         onView(allOf(withTagValue(is((Object) "Entrepreneurship")), isDisplayed())).perform(click());
     }
 
-//    // User Story 3 Find a college based off of major
+    // User Story 3 Find a college based off of major
     @Test
     public void testFindStemCollegeFunction(){
         /*
