@@ -150,6 +150,7 @@ public class MajorSelectionScreen extends AppCompatActivity {
 
 
     //method that is called when a radioButton is clicked
+    // big problem was getting the right number to be added to the total
     public void onRadioButtonClicked(RadioGroup group, int checkedID){
         int one = 1;
         if(group.getTag().equals("STEM")){

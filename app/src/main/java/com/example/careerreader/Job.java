@@ -2,20 +2,20 @@ package com.example.careerreader;
 
 public class Job {
     private String title = "";
-    private String location = "";
-    private double pay = 0;
+    private String company = "";
+    private String url = "";
 
-    public Job(String Title, String Location, double Pay)
+    public Job(String title,String company, String location, String url)
     {
-        this.title = Title;
-        this.location = Location;
-        this.pay = Pay;
+        this.title = title;
+        this.company = company;
+        this.url = url;
     }
     public Job()
     {
         this.title = "";
-        this.location = "";
-        this.pay = 0;
+        this.company = "";
+        this.url = "";
     }
 
     public String getTitle()
@@ -23,23 +23,25 @@ public class Job {
         return  this.title;
     }
 
-    public double getPay() {
-        return pay;
+    public String getCompany() {
+        return company;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setPay(double pay) {
-        this.pay = pay;
+    public String getUrl(){
+        return url;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setUrl(String url){
+        this.url = url;
+    }
+
+
 }

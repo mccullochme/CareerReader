@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -40,8 +42,8 @@ public class MajorResultsScreen extends AppCompatActivity {
             compFields = getIntent().getExtras().getStringArrayList("fieldOfStudyList");
         }
         readIn();
-        Button button = findViewById(R.id.findCollegeWithMajor);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button findACollegeButton = findViewById(R.id.findCollegeWithMajor);
+        findACollegeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userCode = getCollegeCode();
@@ -54,6 +56,7 @@ public class MajorResultsScreen extends AppCompatActivity {
             }
         });
 
+        Drawable background = getDrawable(R.drawable.rounded_button);
         for(int i = 0 ; i<compFields.size();i++)
         {
             for(int j = 0; j< words.size();j++)
@@ -62,16 +65,23 @@ public class MajorResultsScreen extends AppCompatActivity {
                 {
                     for(int k = j+1; k < j+10;k++)
                     {
-                        final Button myButton = new Button(this);
-                        myButton.setText(words.get(k));
-                        myButton.setTag(words.get(k));
-                        myButton.setOnClickListener(new View.OnClickListener(){
+                        final Button majorButton = new Button(this);
+                        majorButton.setText(words.get(k));
+                        majorButton.setTag(words.get(k));
+                        majorButton.setBackground(background);
+                        LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT);
+                        lParams.setMargins(0, 0, 0, 35);
+                        majorButton.setTextColor(Color.parseColor("#FFFFFF"));
+                        majorButton.setLayoutParams(lParams);
+                        majorButton.setOnClickListener(new View.OnClickListener(){
                             public void onClick(View v){
                                 Intent intent = new Intent();
                                 intent.setAction(Intent.ACTION_VIEW);
                                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                                 try{
-                                    intent.setData(Uri.parse(getMajorLink(myButton)));
+                                    intent.setData(Uri.parse(getMajorLink(majorButton)));
                                 }catch(IOException e){
                                     throw new RuntimeException(e);
                                 }
@@ -79,7 +89,7 @@ public class MajorResultsScreen extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
-                        resultView.addView(myButton);
+                        resultView.addView(majorButton);
                     }
                 }
             }
@@ -90,11 +100,23 @@ public class MajorResultsScreen extends AppCompatActivity {
         for (String fields : compFields) {
             temp += fields + ", ";
         }
+        temp += " are: ";
         startText.setText(temp);
 
     }
 
-    //gets corresponding link for major, to be searched in google
+    public void onFindAJobClick(View v){
+        String jobSearch = compFields.get(0);
+        Bundle extras = new Bundle();
+        extras.putString("jobSearch", jobSearch);
+        extras.putString("stateFilt", "");
+        extras.putString("jobTypeFilt", "");
+        Intent intentNext = new Intent(MajorResultsScreen.this , JobResultsScreen.class);
+        intentNext.putExtras(extras);
+        startActivity(intentNext);
+    }
+
+    //gets corresponding link for major from txt file, to be searched in google
     public String getMajorLink(Button myButton)throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("majorLinks.txt"), StandardCharsets.UTF_8));
         String majorLink = "";

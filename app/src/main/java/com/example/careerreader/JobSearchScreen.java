@@ -2,6 +2,8 @@ package com.example.careerreader;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 public class JobSearchScreen extends AppCompatActivity {
 
     private Button filterButton;
+    private Button searchButton;
     private EditText jobText;
     private String jobTypeFilt = "";
     private String stateFilt = "";
@@ -25,6 +28,12 @@ public class JobSearchScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_search_screen);
         filterButton = findViewById(R.id.filterButton);
+        searchButton = findViewById(R.id.jobSearchButton);
+
+        Drawable background = getDrawable(R.drawable.rounded_button);
+        filterButton.setBackground(background);
+        searchButton.setBackground(background);
+        jobText = findViewById(R.id.jobText);
         popup = new PopupMenu(this, filterButton);
         popup.getMenuInflater().inflate(R.menu.job_filter_menu, popup.getMenu());
         filterButton.setOnClickListener(new View.OnClickListener() {
@@ -40,13 +49,20 @@ public class JobSearchScreen extends AppCompatActivity {
                 });
             }
         });
-        jobText = findViewById(R.id.jobText);
     }
 
     //shows toast if nothing has been typed in search bother, otherwise sends scraper needed variables
     public void searchButton (View view){
         if(jobText.getText().length() > 0){
-            //send to a webscraper and then populate results onto jobResultsScreen
+            String jobSearch = jobText.getText().toString();
+            Bundle extras = new Bundle();
+            extras.putString("jobSearch", jobSearch);
+            extras.putString("stateFilt", stateFilt);
+            extras.putString("jobTypeFilt", jobTypeFilt);
+
+            Intent intent = new Intent(this, JobResultsScreen.class);
+            intent.putExtras(extras);
+            startActivity(intent);
         }
         else{
             Toast t = Toast.makeText(this, "CANNOT LEAVE SEARCH BAR BLANK", Toast.LENGTH_LONG);
@@ -57,17 +73,17 @@ public class JobSearchScreen extends AppCompatActivity {
     //formats a toast message depending on the user's filter choices
     public void showToastMssg(){
         String toastMssg;
-        if(jobTypeFilt.length() == 0){
+        if(jobTypeFilt.length() == 0 && stateFilt.length() == 0){
             toastMssg = "No Current Search Filters";
         }
         else if(!(jobTypeFilt.length() > 0)){
-            toastMssg = "Searching jobs by " + stateFilt;
+            toastMssg = "Searching jobs in " + stateFilt;
         }
         else if(!(stateFilt.length() > 0)){
-            toastMssg = "Searching jobs by " + jobTypeFilt;
+            toastMssg = "Searching for " + jobTypeFilt;
         }
         else {
-            toastMssg = "Searching jobs by " + jobTypeFilt + " and " + stateFilt;
+            toastMssg = "Searching for " + jobTypeFilt + " in " + stateFilt;
         }
         Toast t = Toast.makeText(this, toastMssg, Toast.LENGTH_LONG);
         t.show();
