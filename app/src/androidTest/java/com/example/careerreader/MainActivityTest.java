@@ -1,28 +1,71 @@
 package com.example.careerreader;
 
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+
+import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 
 import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.GeneralLocation;
 import androidx.test.espresso.action.GeneralSwipeAction;
 import androidx.test.espresso.action.Press;
 import androidx.test.espresso.action.Swipe;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.rule.ActivityTestRule;
+
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
+import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withTagKey;
 import static androidx.test.espresso.matcher.ViewMatchers.withTagValue;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.AllOf.allOf;
 
 public class MainActivityTest {
+
+    @Test
+    public void ActivityTest2() {
+
+    }
+
+
+    private static Matcher<View> childAtPosition(
+            final Matcher<View> parentMatcher, final int position) {
+
+        return new TypeSafeMatcher<View>() {
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("Child at position " + position + " in parent ");
+                parentMatcher.describeTo(description);
+            }
+
+            @Override
+            public boolean matchesSafely(View view) {
+                ViewParent parent = view.getParent();
+                return parent instanceof ViewGroup && parentMatcher.matches(parent)
+                        && view.equals(((ViewGroup) parent).getChildAt(position));
+            }
+        };
+    }
+
+
 
     @Rule
     public ActivityTestRule<MainActivity> mainActivityActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
@@ -36,6 +79,7 @@ public class MainActivityTest {
         return new GeneralSwipeAction(Swipe.FAST, GeneralLocation.TOP_CENTER,
                 GeneralLocation.BOTTOM_CENTER, Press.FINGER);
     }
+
     //Milestone 1
     // User Story 1 Select College
     @Test
@@ -417,6 +461,360 @@ public class MainActivityTest {
         //scroll back to the top to click on the submit button case
         onView(withId(R.id.button5)).perform(ViewActions.scrollTo()).perform(click());
         onView(withId(R.id.findCollegeWithMajor)).perform(ViewActions.scrollTo()).perform(click());
+    }
+
+    //Milestone 3
+    // User Story 1 Find job by type
+    @Test
+    public void testFullTimeJobFilter() {
+        /*
+        Filter to show only full time jobs
+        Scenario 1
+        This test, tests the ability to filter the job results
+        to show only full time jobs.
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(typeText("Mechanical Engineer"));
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(0).perform(click());
+        onData(anything()).atPosition(2).perform(click());
+        onView(withId(R.id.jobSearchButton)).perform(click());
+
+    }
+    @Test
+    public void testPartTimeJobFilter() {
+        /*
+        Filter to show only part time jobs
+        Scenario 2
+        This test, tests the ability to filter the job results
+        to show only part time jobs.
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(typeText("Software Developer"));
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(0).perform(click());
+        onData(anything()).atPosition(3).perform(click());
+        onView(withId(R.id.jobSearchButton)).perform(click());
+
+    }
+    @Test
+    public void testInternshipsFilter() {
+        /*
+        Filter to show only internships
+        Scenario 3
+        This test, tests the ability to filter the job results
+        to show internships.
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(typeText("Chemical Engineer"));
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(0).perform(click());
+        onData(anything()).atPosition(4).perform(click());
+        onView(withId(R.id.jobSearchButton)).perform(click());
+    }
+
+    // User Story 2 Find job by location
+    @Test
+    public void testArkansasFilter() {
+        /*
+        Filter to show only jobs in Arkansas
+        Scenario 1
+        This test, tests the ability to filter only ME jobs in Arkansas
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(typeText("Mechanical Engineer"));
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(1).perform(click());
+        onData(anything()).atPosition(2).perform(click());
+        onView(withId(R.id.jobSearchButton)).perform(click());
+
+    }
+    @Test
+    public void testAlabamaFilter() {
+        /*
+        Filter to show only jobs in Alabama
+        Scenario 2
+        This test, tests the ability to filter only Bio jobs in Alabama
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(typeText("Biology"));
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(1).perform(click());
+        onData(anything()).atPosition(3).perform(click());
+        onView(withId(R.id.jobSearchButton)).perform(click());
+
+    }
+    @Test
+    public void testArizonaFilter() {
+        /*
+        Filter to show only retail jobs in Arizona
+        Scenario 3
+        This test, tests the ability to filter only retail jobs in Arizona
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(typeText("Retail"));
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(1).perform(click());
+        onData(anything()).atPosition(4).perform(click());
+        onView(withId(R.id.jobSearchButton)).perform(click());
+    }
+
+    //User story 3
+    @Test
+    public void testRedirectToWebPE() {
+        /*
+        Scenario 1
+        This test, tests the ability to click on an external link for Petroleum Engineering to be
+        redirected to a career site where one can apply for the job specified
+        */
+        ViewInteraction appCompatButton = onView(
+                Matchers.allOf(withId(R.id.findJobButton), withText("Find your job"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                3),
+                        isDisplayed()));
+        appCompatButton.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                Matchers.allOf(withId(R.id.jobText),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("Petroleum Engineering"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Petroleum Engineering"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText2.perform(click());
+
+        ViewInteraction appCompatEditText3 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Petroleum Engineering"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("Petroleum Engineering"));
+
+        ViewInteraction appCompatEditText4 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Petroleum Engineering"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText4.perform(closeSoftKeyboard());
+
+        ViewInteraction appCompatButton2 = onView(
+                Matchers.allOf(withId(R.id.jobSearchButton),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                1),
+                        isDisplayed()));
+        appCompatButton2.perform(click());
+
+        ViewInteraction button = onView(
+                Matchers.allOf(
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.resultsList),
+                                        childAtPosition(
+                                                withId(R.id.resultsView),
+                                                0)),
+                                0)));
+        button.perform(scrollTo(), click());
+    }
+
+    @Test
+    public void testRedirectTocWebLS() {
+        /*
+        Scenario 2
+        This test, tests the ability to click on an external link for Liberal Science to be
+        redirected to a career site where one can apply for the job specified
+        */
+        ViewInteraction appCompatButton = onView(
+                Matchers.allOf(withId(R.id.findJobButton), withText("Find your job"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                3),
+                        isDisplayed()));
+        appCompatButton.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                Matchers.allOf(withId(R.id.jobText),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("Liberal Studies"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Liberal Studies"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText2.perform(click());
+
+        ViewInteraction appCompatEditText3 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Liberal Studies"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("Liberal Studies"));
+
+        ViewInteraction appCompatEditText4 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Liberal Studies"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText4.perform(closeSoftKeyboard());
+
+        ViewInteraction appCompatButton2 = onView(
+                Matchers.allOf(withId(R.id.jobSearchButton),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                1),
+                        isDisplayed()));
+        appCompatButton2.perform(click());
+
+        ViewInteraction button = onView(
+                Matchers.allOf(
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.resultsList),
+                                        childAtPosition(
+                                                withId(R.id.resultsView),
+                                                0)),
+                                0)));
+        button.perform(scrollTo(), click());
+
+    }
+
+    @Test
+    public void testRedirectTocWebCS() {
+        /*
+        Scenario 3
+        This test, tests the ability to click on an external link for Computer Science jobs to be
+        redirected to a career site where one can apply for the job specified
+        */
+        ViewInteraction appCompatButton = onView(
+                Matchers.allOf(withId(R.id.findJobButton), withText("Find your job"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                3),
+                        isDisplayed()));
+        appCompatButton.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                Matchers.allOf(withId(R.id.jobText),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("Computer Science"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText2 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Computer Science"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText2.perform(click());
+
+        ViewInteraction appCompatEditText3 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Computer Science"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("Computer Science"));
+
+        ViewInteraction appCompatEditText4 = onView(
+                Matchers.allOf(withId(R.id.jobText), withText("Computer Science"),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                0),
+                        isDisplayed()));
+        appCompatEditText4.perform(closeSoftKeyboard());
+
+        ViewInteraction appCompatButton2 = onView(
+                Matchers.allOf(withId(R.id.jobSearchButton),
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.linearLayout),
+                                        childAtPosition(
+                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                                0)),
+                                1),
+                        isDisplayed()));
+        appCompatButton2.perform(click());
+
+        ViewInteraction button = onView(
+                Matchers.allOf(
+                        childAtPosition(
+                                Matchers.allOf(withId(R.id.resultsList),
+                                        childAtPosition(
+                                                withId(R.id.resultsView),
+                                                0)),
+                                0)));
+        button.perform(scrollTo(), click());
+
     }
 
 
