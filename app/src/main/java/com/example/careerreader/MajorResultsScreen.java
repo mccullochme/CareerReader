@@ -105,6 +105,7 @@ public class MajorResultsScreen extends AppCompatActivity {
 
     }
 
+
     public void onFindAJobClick(View v){
         String jobSearch = compFields.get(0);
         Bundle extras = new Bundle();
