@@ -22,7 +22,8 @@ class SimplyHiredScraper extends AsyncTask<Object, String, ArrayList<Job>> {
         String jobTitle = (String) params[0];
         String stateFilt = (String) params[1];
         String jobType = (String) params[2];
-        String searchTerm = getSearchTerm(jobTitle, stateFilt, jobType);
+        String minSalary = (String) params[3];
+        String searchTerm = getSearchTerm(jobTitle, stateFilt, jobType, minSalary);
 
         ArrayList<Job> jobList = new ArrayList<Job>();
 
@@ -60,15 +61,36 @@ class SimplyHiredScraper extends AsyncTask<Object, String, ArrayList<Job>> {
         return jobList;
     }
 
-    private String getSearchTerm(String jobSearch, String stateFilt, String jobType){
+    private String getSearchTerm(String jobSearch, String stateFilt, String jobType, String minSalary){
         String searchTerm = "q=" + jobSearch;
 
-        if(stateFilt.length() > 0){
+        if(stateFilt.length() > 0) {
             searchTerm += "&l=" + stateFilt;
-        }else if(jobType.length() > 0){
+        }
+        if(jobType.length() > 0){
             searchTerm += "&jt=" + jobType;
         }
+        if(minSalary.length() > 0){
+            searchTerm += "&mip=%24" + getSalarySearchCode(minSalary) + "%2C000";
+        }
         return searchTerm;
+    }
+
+    public String getSalarySearchCode(String minSalary){
+        String searchCode = "";
+        switch(minSalary){
+            case "30,000":
+               searchCode = "35";
+            case "45,000":
+                searchCode = "45";
+            case "60,000":
+                searchCode = "60";
+            case "80,000":
+                searchCode = "80";
+            case "100,000":
+                searchCode = "100";
+        }
+        return searchCode;
     }
 
     protected void onPostExecute(ArrayList<Job> jobList) {

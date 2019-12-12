@@ -111,6 +111,7 @@ public class MajorResultsScreen extends AppCompatActivity {
         extras.putString("jobSearch", jobSearch);
         extras.putString("stateFilt", "");
         extras.putString("jobTypeFilt", "");
+        extras.putString("minSalary", "");
         Intent intentNext = new Intent(MajorResultsScreen.this , JobResultsScreen.class);
         intentNext.putExtras(extras);
         startActivity(intentNext);

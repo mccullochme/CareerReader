@@ -19,6 +19,7 @@ public class JobSearchScreen extends AppCompatActivity {
     private EditText jobText;
     private String jobTypeFilt = "";
     private String stateFilt = "";
+    private String minSalary = "";
     private PopupMenu popup;
 
 
@@ -59,6 +60,7 @@ public class JobSearchScreen extends AppCompatActivity {
             extras.putString("jobSearch", jobSearch);
             extras.putString("stateFilt", stateFilt);
             extras.putString("jobTypeFilt", jobTypeFilt);
+            extras.putString("minSalary", minSalary);
 
             Intent intent = new Intent(this, JobResultsScreen.class);
             intent.putExtras(extras);
@@ -72,18 +74,30 @@ public class JobSearchScreen extends AppCompatActivity {
 
     //formats a toast message depending on the user's filter choices
     public void showToastMssg(){
-        String toastMssg;
-        if(jobTypeFilt.length() == 0 && stateFilt.length() == 0){
+        String toastMssg = "";
+        if(jobTypeFilt.length() == 0 && stateFilt.length() == 0 && minSalary.length() == 0){
             toastMssg = "No Current Search Filters";
         }
-        else if(!(jobTypeFilt.length() > 0)){
+        if((jobTypeFilt.length() == 0) && minSalary.length() == 0){
             toastMssg = "Searching jobs in " + stateFilt;
         }
-        else if(!(stateFilt.length() > 0)){
+        if(stateFilt.length() == 0 && minSalary.length() == 0){
             toastMssg = "Searching for " + jobTypeFilt;
         }
-        else {
+        if(jobTypeFilt.length() == 0 && stateFilt.length() == 0){
+            toastMssg = "Searching for jobs with minimum salary of: $" + minSalary;
+        }
+        if(jobTypeFilt.length() > 0 && stateFilt.length() > 0 && minSalary.length() == 0){
             toastMssg = "Searching for " + jobTypeFilt + " in " + stateFilt;
+        }
+        if(jobTypeFilt.length() > 0 && minSalary.length() > 0 && stateFilt.length() == 0){
+            toastMssg = "Searching for " + jobTypeFilt + " with min salary: $" + minSalary;
+        }
+        if(stateFilt.length() > 0 && minSalary.length() > 0 && jobTypeFilt.length() == 0){
+            toastMssg = "Searching for jobs in" + stateFilt + " with min salary $" + minSalary;
+        }
+        if(jobTypeFilt.length() > 0 && stateFilt.length() > 0 && minSalary.length() > 0){
+            toastMssg = "Searching for " + jobTypeFilt + " in " + stateFilt + " with min salary: $" + minSalary;
         }
         Toast t = Toast.makeText(this, toastMssg, Toast.LENGTH_LONG);
         t.show();
@@ -313,6 +327,30 @@ public class JobSearchScreen extends AppCompatActivity {
                 return true;
             case R.id.wyoming:
                 stateFilt = "WY";
+                showToastMssg();
+                return true;
+            case R.id.jobSalaryDefault:
+                minSalary = "";
+                showToastMssg();
+                return true;
+            case R.id.thirtFiveThsnd:
+                minSalary = "35,000";
+                showToastMssg();
+                return true;
+            case R.id.fortyFiveThsnd:
+                minSalary = "45,000";
+                showToastMssg();
+                return true;
+            case R.id.sixtyThsnd:
+                minSalary = "60,000";
+                showToastMssg();
+                return true;
+            case R.id.eightyThsnd:
+                minSalary = "80,000";
+                showToastMssg();
+                return true;
+            case R.id.oneHundredThsnd:
+                minSalary = "100,000";
                 showToastMssg();
                 return true;
             default:
