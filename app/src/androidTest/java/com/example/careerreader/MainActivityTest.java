@@ -816,6 +816,49 @@ public class MainActivityTest {
         button.perform(scrollTo(), click());
 
     }
+    //User story number 4
+    @Test
+    public void testSalaryFilter() {
+        /*
+        Scenario 1
+        This test, tests the ability to by salary.
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(2).perform(click());
+
+    }
+    @Test
+    public void testSalaryRange30K() {
+        /*
+        Scenario 2
+        This test, tests the ability to filter by salary
+        for the range $30,000.
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(typeText("Software"));
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(2).perform(click());
+        onData(anything()).atPosition(2).perform(click());
+        onView(withId(R.id.jobSearchButton)).perform(click());
+    }
+    @Test
+    public void testSalaryRange60K() {
+        /*
+        Scenario 3
+        This test, tests the ability to filter by salary
+        for the range $60,000.
+        */
+        onView(withId(R.id.findJobButton)).perform(click());
+        onView(withId(R.id.jobText)).perform(typeText("Software"));
+        onView(withId(R.id.jobText)).perform(closeSoftKeyboard());
+        onView(withId(R.id.filterButton)).perform(click());
+        onData(anything()).atPosition(2).perform(click());
+        onData(anything()).atPosition(4).perform(click());
+        onView(withId(R.id.jobSearchButton)).perform(click());
+    }
 
 
 }
