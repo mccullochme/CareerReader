@@ -16,3 +16,11 @@ Project: CareerReader
 -we accomplished this by setting the button to a tag and getting the button by use of the tag
 -our future iteration will encapsulate the find a job feature
 -the design pattern we chose to implement was the facade design pattern, we used the design pattern to encapsulate the object classes we are using into one so we can access the methods in one place.
+
+>>>Iteration 3..
+-Added the functionality of find a job feature, this uses a webscraper for simply hired .com 
+-We wanted to use indeed's website but because the url does not change for the different jobs when selected we had to go with simply hired
+-When you search for a job it passes the scraper whatever search filters you have and appends it to the url
+-When the results screen is created buttons for each result on the first page of simply hired is created
+-each button has a different url attached to it that will bring you to the job that cooresponds to that button
+-The websraper was done by using Jsooups library and looking at the html code of the different webpages and using Jsoups commands to grab whatever elements I need for the website, and looking at how the url changes when entering different webpages
