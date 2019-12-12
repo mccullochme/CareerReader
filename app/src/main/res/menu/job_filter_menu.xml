@@ -5,8 +5,8 @@
         android:id="@+id/jobType"
         android:title="Type" >
         <menu>
-            <group android:id="@+id/jobTypes">
-                android:checkableBehavior="single">
+<!--            <group android:id="@+id/jobTypes">-->
+<!--                android:checkableBehavior="single">-->
 
             <item android:id="@+id/jobTypeDefault"
                 android:title="None" />
@@ -16,7 +16,7 @@
                 android:title="Part-Time Job" />
             <item android:id="@+id/internship"
                 android:title="Internship" />
-            </group>
+<!--            </group>-->
         </menu>
     </item>
 
@@ -126,6 +126,26 @@
                 android:title="WV" />
             <item android:id="@+id/wyoming"
                 android:title="WY" />
+
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/jobSalary"
+        android:title="Minimum Salary">
+        <menu>
+            <item android:id="@+id/jobSalaryDefault"
+                android:title="All Salaries"/>
+            <item android:id="@+id/thirtFiveThsnd"
+                android:title="$35,000"/>
+            <item android:id="@+id/fortyFiveThsnd"
+                android:title="$45,000"/>
+            <item android:id="@+id/sixtyThsnd"
+                android:title="$60,000"/>
+            <item android:id="@+id/eightyThsnd"
+                android:title="$80,000"/>
+            <item android:id="@+id/oneHundredThsnd"
+                android:title="$100,000"/>
 
         </menu>
     </item>
