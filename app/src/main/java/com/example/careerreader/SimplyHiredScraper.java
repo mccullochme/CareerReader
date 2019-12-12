@@ -76,6 +76,7 @@ class SimplyHiredScraper extends AsyncTask<Object, String, ArrayList<Job>> {
         return searchTerm;
     }
 
+
     public String getSalarySearchCode(String minSalary){
         String searchCode = "";
         switch(minSalary){
